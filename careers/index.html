@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    
+    <title>AXT CAREERS | Join the Future</title>
+    <meta name="description" content="Join AXT Technology. Hiring Developers, System Admins, Data Analysts, UI/UX Designers, and Mentors. Remote and On-site roles available.">
+    <meta name="theme-color" content="#050505">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AXT CAREERS - Build the Future">
+    <meta property="og:image" content="https://cdn.axt.co.in/logo.jpg">
+    <meta property="og:url" content="https://axt.co.in/careers/">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- VARIABLES --- */
+        :root {
+            --brand-red: #ff1f1f;
+            --brand-dark: #050505;
+            --card-bg: #0f0f0f;
+            --card-border: #222;
+            --text-main: #ffffff;
+            --text-muted: #9ca3af;
+            --gradient-text: linear-gradient(90deg, #fff, #ccc);
+            --gradient-red: linear-gradient(135deg, #ff1f1f 0%, #8b0000 100%);
+        }
+
+        /* --- RESET --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--brand-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+
+        /* --- NAVIGATION (Simple) --- */
+        nav {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--card-border);
+            background: rgba(5,5,5,0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px; }
+        .logo span { color: var(--brand-red); }
+        .back-link { font-size: 0.9rem; color: var(--text-muted); }
+        .back-link:hover { color: #fff; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 100px 20px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Background Glow */
+        .hero::before {
+            content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%);
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(255, 31, 31, 0.15) 0%, transparent 70%);
+            filter: blur(80px);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 20px;
+            background: linear-gradient(to bottom, #fff, #666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero h1 span {
+            color: var(--brand-red);
+            -webkit-text-fill-color: initial;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* --- JOBS CONTAINER --- */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 40px 5%;
+        }
+
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--card-border);
+        }
+        .count-badge {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .count-badge strong { color: #fff; }
+
+        /* --- GRID LAYOUT --- */
+        .job-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        /* --- CARD DESIGN --- */
+        .job-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 35px 30px;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            flex-direction: column;
+            group: hover;
+        }
+
+        .job-card:hover {
+            border-color: var(--brand-red);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+        }
+
+        /* Top Section: Icon & Type */
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .role-icon {
+            width: 45px; height: 45px;
+            background: #151515;
+            border: 1px solid #333;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; color: var(--text-main);
+        }
+        .type-pill {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        /* Pill Colors */
+        .pill-onsite { background: rgba(255, 255, 255, 0.1); color: #fff; border: 1px solid rgba(255,255,255,0.1); }
+        .pill-remote { background: rgba(0, 255, 128, 0.1); color: #00ff80; border: 1px solid rgba(0, 255, 128, 0.15); }
+        .pill-contract { background: rgba(255, 165, 0, 0.1); color: #ffaa00; border: 1px solid rgba(255, 165, 0, 0.15); }
+        .pill-trainee { background: rgba(50, 150, 255, 0.1); color: #5ec3ff; border: 1px solid rgba(50, 150, 255, 0.15); }
+
+        /* Content Section */
+        .job-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+        .location {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 20px;
+            display: flex; align-items: center; gap: 6px;
+        }
+
+        /* Tags */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+        .tag {
+            font-size: 0.75rem;
+            color: #aaa;
+            background: #1a1a1a;
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid #292929;
+        }
+
+        /* Bottom Section */
+        .card-bottom {
+            margin-top: auto;
+            padding-top: 25px;
+            border-top: 1px solid #222;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .salary {
+            display: flex; flex-direction: column;
+        }
+        .salary strong { font-size: 1.2rem; color: #fff; line-height: 1; }
+        .salary span { font-size: 0.8rem; color: #666; margin-top: 4px; }
+
+        .apply-btn {
+            background: #fff;
+            color: #000;
+            font-weight: 700;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .apply-btn:hover {
+            background: var(--brand-red);
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 80px 20px 40px;
+            color: #444;
+            font-size: 0.9rem;
+        }
+        .footer-brand {
+            margin-bottom: 20px; opacity: 0.5;
+        }
+        .footer-links a { color: #666; margin: 0 10px; font-size: 0.85rem; }
+        .footer-links a:hover { color: var(--brand-red); }
+
+        @media(max-width: 600px) {
+            .job-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 3rem; }
+            .card-bottom { align-items: flex-end; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">AXT<span>TECHNOLOGYS</span></a>
+        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+    </nav>
+
+    <section class="hero">
+        <h1>BUILD THE <span>FUTURE</span></h1>
+        <p>Join a team of 30+ innovators redefining Cloud Infrastructure & EdTech.<br>Find your place at AXT Technology.</p>
+    </section>
+
+    <div class="container">
+        
+        <div class="toolbar">
+            <div class="count-badge">Currently Hiring: <strong>8 Positions</strong></div>
+            <div style="font-size:0.9rem; color:#666;"><i class="fa-solid fa-globe"></i> Global Recruitment</div>
+        </div>
+
+        <div class="job-grid">
+
+            <!-- Role 1: SysAdmin -->
+            <div class="job-card">
+                <div class="card-top">
+                    <div class="role-icon"><i class="fa-solid fa-server"></i></div>
+                    <span class="type-pill pill-onsite">Full Time</span>
+                </div>
+                <h3>System Administrator</h3>
+                <div class="location"><i class="fa-solid fa-location-dot" style="color:var(--brand-red);"></i> Bangalore, India (On-site)</div>
+                <div class="tags">
+                    <span class="tag">Linux/Windows</span>
+                    <span class="tag">Networking</span>
+                    <span class="tag">Hardware</span>
+                </div>
+                <div class="card-bottom">
+                    <div class="salary">
+                        <strong>₹40,000</strong>
+                        <span>Per Month</span>
+                    </div>
+                    <a href="https://edu.ac.axt.co.in/jobs/system-administrator/details.php" class="apply-btn">Apply <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Role 2: Frontend -->
+            <div class="job-card">
+                <div class="card-top">
+                    <div class="role-icon"><i class="fa-brands fa-react"></i></div>
+                    <span class="type-pill pill-remote">Remote</span>
+                </div>
+                <h3>Frontend Developer</h3>
+                <div class="location"><i class="fa-solid fa-laptop"></i> Work From Home</div>
+                <div class="tags">
+                    <span class="tag">React.js</span>
+                    <span class="tag">Tailwind</span>
+                    <span class="tag">UI/UX</span>
+                </div>
+                <div class="card-bottom">
+                    <div class="salary">
+                        <strong>₹30,000</strong>
+                        <span>Per Month</span>
+                    </div>
+                    <a href="https://edu.ac.axt.co.in/jobs/fronted-developer/details.php" class="apply-btn">Apply <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Role 3: Database Admin -->
+            <div class="job-card">
+                <div class="card-top">
+                    <div class="role-icon"><i class="fa-solid fa-database"></i></div>
+                    <span class="type-pill pill-contract">Contract</span>
+                </div>
+                <h3>Database Admin</h3>
+                <div class="location"><i class="fa-solid fa-laptop"></i> Work From Home</div>
+                <div class="tags">
+                    <span class="tag">MySQL</span>
+                    <span class="tag">Security</span>
+                    <span class="tag">Optimization</span>
+                </div>
+                <div class="card-bottom">
+                    <div class="salary">
+                        <strong>₹25,000</strong>
+                        <span>Per Month</span>
+                    </div>
+                    <a href="https://edu.ac.axt.co.in/jobs/database-administrator/details.php" class="apply-btn">Apply <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Role 4: Module Designer -->
+            <div class="job-card">
+                <div class="card-top">
+                    <div class="role-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+                    <span class="type-pill pill-remote">Remote</span>
+                </div>
+                <h3>Module Designer</h3>
+                <div class="location"><i class="fa-solid fa-laptop"></i> Work From Home</div>
+                <div class="tags">
+                    <span class="tag">Curriculum</span>
+                    <span class="tag">PPT Design</span>
+                    <span class="tag">Content</span>
+                </div>
+                <div class="card-bottom">
+                    <div class="salary">
+                        <strong>₹15,000</strong>
+                        <span>Per Month</span>
+                    </div>
+                    <a href="https://edu.ac.axt.co.in/jobs/module-designer/details.php" class="apply-btn">Apply <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Role 5: UI/UX Designer -->
+            <div class="job-card">
+                <div class="card-top">
+                    <div class="role-icon"><i class="fa-solid fa-pen-nib"></i></div>
+                    <span class="type-pill pill-contract">Part Time</span>
+                </div>
+                <h3>UI & UX Designer</h3>
+                <div class="location"><i class="fa-solid fa-laptop"></i> Remote (Work From Home)</div>
+                <div class="tags">
+                    <span class="tag">Figma</span>
+                    <span class="tag">Wireframing</span>
+                    <span class="tag">Prototyping</span>
+                </div>
+                <div class="card-bottom">
+                    <div class="salary">
+                        <strong>₹12,000</strong>
+                        <span>Per Month</span>
+                    </div>
+                    <a href="https://edu.ac.axt.co.in/jobs/ui-ux-designer/details.php" class="apply-btn">Apply <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Role 6: Mentor Trainee -->
+            <div class="job-card">
+                <div class="card-top">
+                    <div class="role-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+                    <span class="type-pill pill-trainee">Trainee</span>
+                </div>
+                <h3>Mentor Trainee</h3>
+                <div class="location"><i class="fa-solid fa-house-laptop"></i> Remote / Hybrid</div>
+                <div class="tags">
+                    <span class="tag">Teaching</span>
+                    <span class="tag">Communication</span>
+                    <span class="tag">Guidance</span>
+                </div>
+                <div class="card-bottom">
+                    <div class="salary">
+                        <strong>₹6,000</strong>
+                        <span>Stipend / Mo</span>
+                    </div>
+                    <a href="https://edu.ac.axt.co.in/jobs/mentor-trainee/details.php" class="apply-btn">Apply <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Role 7: Data Analyst Trainee -->
+            <div class="job-card">
+                <div class="card-top">
+                    <div class="role-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <span class="type-pill pill-trainee" style="font-size:0.65rem; letter-spacing:0.5px;">Trainee • PT • FT</span>
+                </div>
+                <h3>Data Analyst Trainee</h3>
+                <div class="location"><i class="fa-solid fa-house-laptop"></i> Remote / Hybrid</div>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Excel</span>
+                    <span class="tag">Fresher</span>
+                </div>
+                <div class="card-bottom">
+                    <div class="salary">
+                        <strong>₹5,000</strong>
+                        <span>Stipend / Mo</span>
+                    </div>
+                    <a href="https://edu.ac.axt.co.in/jobs/data-analysts/details.php" class="apply-btn">Apply <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Role 8: Discord Admin -->
+            <div class="job-card">
+                <div class="card-top">
+                    <div class="role-icon"><i class="fa-brands fa-discord"></i></div>
+                    <span class="type-pill pill-contract">Part Time</span>
+                </div>
+                <h3>Discord Admin</h3>
+                <div class="location"><i class="fa-solid fa-laptop"></i> Work From Home</div>
+                <div class="tags">
+                    <span class="tag">Community</span>
+                    <span class="tag">Moderation</span>
+                    <span class="tag">Support</span>
+                </div>
+                <div class="card-bottom">
+                    <div class="salary">
+                        <strong>₹4,000</strong>
+                        <span>Per Month</span>
+                    </div>
+                    <a href="https://edu.ac.axt.co.in/jobs/discord-admin/details.php" class="apply-btn">Apply <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-brand">
+            <img src="https://cdn.axt.co.in/logo.jpg" alt="AXT" style="width:40px; border-radius:5px; margin:0 auto 15px; filter:grayscale(100%);">
+            <p>&copy; <span id="year"></span> AXT TECHNOLOGYS PVT LTD</p>
+        </div>
+        <div class="footer-links">
+            <a href="company.html">About Us</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="contact.html">Contact HR</a>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
+
+

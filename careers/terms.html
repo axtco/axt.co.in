@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Terms of Service | AXTCloud</title>
+    <meta name="description" content="Terms of Service for AXTCloud. Please read our conditions of use regarding hosting, payments, and acceptable use.">
+    <meta name="theme-color" content="#050505">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="icon" type="image/jpg" href="https://cdn.axt.co.in/logo.jpg">
+
+    <style>
+        :root {
+            --primary-red: #ff0000;
+            --dark-bg: #050505;
+            --card-bg: #111111;
+            --text-white: #ffffff;
+            --text-muted: #aaaaaa;
+            --border-color: #222;
+            --gradient: linear-gradient(135deg, #ff0000 0%, #8b0000 100%);
+            --header-height: 80px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; scroll-padding-top: var(--header-height); }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-white);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* UTILITIES */
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        .highlight { color: var(--primary-red); }
+
+        /* ANIMATIONS */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* HEADER */
+        header {
+            position: fixed; top: 0; width: 100%; height: var(--header-height);
+            padding: 0 5%; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .brand { font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 10px; z-index: 1002; }
+        .brand span { color: var(--primary-red); }
+        .brand img { height: 40px; border-radius: 6px; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { font-size: 0.95rem; color: #ccc; font-weight: 500; }
+        .nav-links a:hover { color: var(--text-white); }
+        .cta-btn {
+            background: var(--primary-red); padding: 10px 24px; border-radius: 8px;
+            font-weight: 600; color: white !important; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+        }
+        .cta-btn:hover { background: #cc0000; transform: translateY(-2px); }
+        .mobile-toggle { display: none; font-size: 1.5rem; color: #fff; cursor: pointer; z-index: 1002; }
+
+        /* HERO */
+        .hero {
+            padding: 140px 20px 60px;
+            text-align: center;
+            background: radial-gradient(circle at top, #1a0000 0%, var(--dark-bg) 70%);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 700; margin-bottom: 15px; }
+        .hero p { color: var(--text-muted); }
+
+        /* TERMS CONTENT */
+        .terms-container {
+            max-width: 900px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .terms-section {
+            margin-bottom: 50px;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .terms-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #fff;
+            border-left: 4px solid var(--primary-red);
+            padding-left: 15px;
+        }
+
+        .terms-section h3 { font-size: 1.1rem; margin: 25px 0 10px; color: #ddd; }
+        .terms-section p { color: #aaa; margin-bottom: 15px; font-size: 0.95rem; }
+        
+        .terms-section ul { list-style-type: disc; margin-left: 20px; margin-bottom: 15px; color: #aaa; }
+        .terms-section li { margin-bottom: 8px; font-size: 0.95rem; }
+
+        .contact-box {
+            background: linear-gradient(to right, #111, #1a0505);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .contact-box a { color: var(--primary-red); font-weight: 600; font-size: 1.1rem; }
+
+        /* FOOTER */
+        footer { background: #080808; border-top: 1px solid #222; padding: 60px 20px; text-align: center; color: #666; }
+        .footer-links { margin: 25px 0; font-size: 0.9rem; }
+        .footer-links a { color: #999; padding: 0 10px; }
+        .footer-links a:hover { color: var(--primary-red); }
+
+        /* MOBILE */
+        @media (max-width: 992px) {
+            .mobile-toggle { display: block; }
+            .nav-links {
+                position: fixed; top: 0; right: -100%; height: 100vh; width: 75%; max-width: 300px;
+                background: #111; flex-direction: column; justify-content: center; gap: 40px;
+                transition: 0.4s ease; z-index: 1001; box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+            }
+            .nav-links.active { right: 0; }
+            .overlay {
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.7); z-index: 1000; display: none; opacity: 0; transition: 0.3s;
+            }
+            .overlay.active { display: block; opacity: 1; }
+            .terms-section { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay" id="overlay"></div>
+
+    <header>
+        <a href="index.html" class="brand">
+            <img src="https://cdn.axt.co.in/logo.jpg" alt="AXT Logo">
+            <div>AXT<span>Cloud</span></div>
+        </a>
+        <div class="mobile-toggle" id="mobileToggle"><i class="fa-solid fa-bars"></i></div>
+        <nav class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="vps-hosting.html">VPS</a>
+            <a href="cloud-hosting.html">Cloud</a>
+            <a href="dedicated-servers.html">Dedicated</a>
+            <a href="about.html">About Us</a>
+            <a href="mailto:sales@mail.axt.co.in" class="cta-btn">Contact Sales</a>
+        </nav>
+    </header>
+
+    <div class="hero reveal">
+        <h1>Terms of <span class="highlight">Service</span></h1>
+        <p>Last Updated: <span id="lastUpdated">November 2025</span></p>
+    </div>
+
+    <div class="terms-container">
+        
+        <div class="terms-section reveal">
+            <h2>1. Acceptance of Terms</h2>
+            <p>By accessing or using the services provided by AXT TECHNOLOGYS PRIVATE LIMITED ("AXTCloud", "we", "us", or "our"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.</p>
+            <p>We reserve the right to modify these terms at any time. Continued use of the service constitutes acceptance of the updated terms.</p>
+        </div>
+
+        <div class="terms-section reveal">
+            <h2>2. Account Registration</h2>
+            <p>To access our services, you must create an account. You agree to provide accurate, current, and complete information during the registration process.</p>
+            <ul>
+                <li>You are responsible for maintaining the confidentiality of your account credentials.</li>
+                <li>You are solely responsible for all activities that occur under your account.</li>
+                <li>AXTCloud reserves the right to suspend or terminate accounts that provide false information or violate these terms.</li>
+            </ul>
+        </div>
+
+        <div class="terms-section reveal">
+            <h2>3. Acceptable Use Policy (AUP)</h2>
+            <p>You agree not to use our services for any unlawful or prohibited activities, including but not limited to:</p>
+            <ul>
+                <li>Hosting content that infringes upon intellectual property rights.</li>
+                <li>Distributing malware, viruses, or engaging in phishing activities.</li>
+                <li>Sending unsolicited bulk email (SPAM).</li>
+                <li>Launching DDoS attacks or network scanning.</li>
+                <li>Hosting illegal content under Indian law or the laws of the jurisdiction where the server is located.</li>
+            </ul>
+            <p>Violation of this policy may result in immediate termination of services without refund.</p>
+        </div>
+
+        <div class="terms-section reveal">
+            <h2>4. Payments and Billing</h2>
+            <h3>4.1 Subscriptions</h3>
+            <p>Services are billed on a recurring basis (Monthly, Annually, or Triennially) as selected during purchase. Invoices are generated 7 days prior to the due date.</p>
+            
+            <h3>4.2 Refunds</h3>
+            <p>We offer a <strong>30-Day Money-Back Guarantee</strong> for Web Hosting and Cloud Hosting plans. This guarantee does not apply to Dedicated Servers, Domain Registrations, or Software Licenses, which are non-refundable.</p>
+            
+            <h3>4.3 Cancellations</h3>
+            <p>You may cancel your service at any time via the client portal. Cancellations must be requested at least 24 hours before the next renewal date.</p>
+        </div>
+
+        <div class="terms-section reveal">
+            <h2>5. Service Level Agreement (SLA)</h2>
+            <p>We guarantee a 99.9% network uptime. If we fail to meet this guarantee, you may be eligible for service credits calculated as a percentage of your monthly fee.</p>
+            <p>This SLA excludes scheduled maintenance, force majeure events, or issues caused by client configuration errors.</p>
+        </div>
+
+        <div class="terms-section reveal">
+            <h2>6. Limitation of Liability</h2>
+            <p>In no event shall AXTCloud, its directors, employees, or agents be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of the services.</p>
+        </div>
+
+        <div class="terms-section reveal">
+            <h2>7. Governing Law</h2>
+            <p>These Terms shall be governed and construed in accordance with the laws of India, without regard to its conflict of law provisions. Any disputes arising under these terms shall be subject to the exclusive jurisdiction of the courts located in Bengaluru, Karnataka.</p>
+        </div>
+
+        <div class="terms-section reveal">
+            <h2>8. Contact Information</h2>
+            <p>For legal inquiries regarding these Terms of Service, please contact our Legal Department:</p>
+            
+            <div class="contact-box">
+                <i class="fa-solid fa-scale-balanced" style="color:var(--primary-red); font-size: 1.5rem; margin-bottom:10px;"></i>
+                <p style="margin-bottom: 5px; color:#fff;">Legal Department</p>
+                <a href="mailto:legal@mail.axt.co.in">legal@mail.axt.co.in</a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="brand" style="justify-content: center; margin-bottom: 20px; filter: grayscale(100%); opacity: 0.5;">
+            <img src="https://cdn.axt.co.in/logo.jpg" alt="AXT Logo" width="40" height="40">
+            <div>AXT<span>Cloud</span></div>
+        </div>
+        <p>© <span id="year"></span> AXT TECHNOLOGYS PVT LTD. All Rights Reserved.</p>
+        <div class="footer-links">
+            <a href="about.html">About Us</a> | 
+            <a href="privacy.html">Privacy Policy</a> | 
+            <a href="terms.html" style="color:var(--primary-red);">Terms of Service</a>
+        </div>
+        <p style="font-size: 0.85rem; color: #444;">Unit 14B, World Trade Center, Bengaluru – 560055</p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Dynamic Date
+        const date = new Date();
+        const month = date.toLocaleString('default', { month: 'long' });
+        const year = date.getFullYear();
+        document.getElementById('lastUpdated').textContent = `${month} ${year}`;
+
+        // Mobile Menu
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        const overlay = document.getElementById('overlay');
+        const toggleIcon = mobileToggle.querySelector('i');
+
+        function toggleMenu() {
+            const isActive = navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+            if (isActive) {
+                toggleIcon.classList.remove('fa-bars');
+                toggleIcon.classList.add('fa-xmark');
+                document.body.style.overflow = 'hidden';
+            } else {
+                toggleIcon.classList.remove('fa-xmark');
+                toggleIcon.classList.add('fa-bars');
+                document.body.style.overflow = '';
+            }
+        }
+        function closeMenu() {
+            navLinks.classList.remove('active');
+            overlay.classList.remove('active');
+            toggleIcon.classList.remove('fa-xmark');
+            toggleIcon.classList.add('fa-bars');
+            document.body.style.overflow = '';
+        }
+        mobileToggle.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', closeMenu);
+
+        // Scroll Reveal
+        if ('IntersectionObserver' in window) {
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+        } else {
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+        }
+    </script>
+</body>
+</html>
