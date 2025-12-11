@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>UXE Shield | Optimized DDoS Protection | AXTCloud</title>
+    <meta name="description" content="UXE Shield: On-demand, Anycast DDoS protection for game servers, TCP/UDP applications, and high-risk workloads. Instant activation and pay-as-you-go.">
+    <meta name="theme-color" content="#007bff">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <link rel="icon" type="image/jpg" href="https://cdn.axt.co.in/logo.jpg">
+
+    <style>
+        :root {
+            /* Core Branding */
+            --primary-red: #ff0000;
+            --dark-bg: #030303; 
+            --card-bg: #0d0d0d;
+            --card-hover: #171717;
+            --text-white: #ffffff;
+            --text-muted: #aaaaaa;
+            --header-height: 70px;
+
+            /* Shield Theme Colors */
+            --shield-blue: #007bff;
+            --shield-dark: #00152a; 
+            --shield-gradient: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            --shadow-blue: rgba(0, 123, 255, 0.4);
+            
+            /* Fluid Typography */
+            --fs-h1: clamp(2.8rem, 8vw, 5rem);
+            --fs-h2: clamp(2.2rem, 5vw, 3.2rem);
+            --fs-base: clamp(1rem, 1.5vw, 1.1rem);
+        }
+
+        /* --- Global Reset & Performance Optimization --- */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            -webkit-tap-highlight-color: transparent; 
+        }
+        
+        html { scroll-behavior: smooth; scroll-padding-top: var(--header-height); }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Typography & Utilities */
+        a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+        .highlight-shield {
+            background: var(--shield-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            position: sticky; top: 0; width: 100%; height: var(--header-height);
+            padding: 0 5%; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(3, 3, 3, 0.95); 
+            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(15px); 
+            z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .brand { font-size: 1.4rem; font-weight: 700; display: flex; align-items: center; gap: 8px; z-index: 1002; }
+        .brand img { width: 35px; height: 35px; border-radius: 50%; }
+
+        /* --- CTA BUTTONS --- */
+        .cta-btn {
+            padding: 10px 24px; border-radius: 6px;
+            font-weight: 600; color: white !important;
+            display: inline-block; cursor: pointer;
+            border: 1px solid transparent; 
+            transition: all 0.2s ease;
+        }
+        .cta-primary { background: var(--shield-blue); box-shadow: 0 4px 10px var(--shadow-blue); }
+        .cta-primary:hover { background: #0056b3; transform: translateY(-2px); box-shadow: 0 6px 15px var(--shadow-blue); }
+        .cta-primary:active { background: #004085; transform: translateY(0); box-shadow: none; }
+        .cta-secondary { background: transparent; border-color: var(--shield-blue); color: var(--shield-blue) !important; box-shadow: none; }
+        .cta-secondary:hover { background: rgba(0, 123, 255, 0.1); transform: translateY(-2px); }
+        .cta-secondary:active { background: rgba(0, 123, 255, 0.2); transform: translateY(0); }
+        .cta-login { background: var(--primary-red) !important; border-color: var(--primary-red) !important; box-shadow: none; }
+        .cta-login:hover { background: #cc0000 !important; transform: translateY(-2px); }
+        .cta-login:active { background: #990000 !important; transform: translateY(0); }
+
+        /* --- HERO & SECTIONS (Layout retained) --- */
+        .hero { min-height: calc(100vh - var(--header-height)); min-height: calc(100dvh - var(--header-height)); display: grid; grid-template-columns: 1fr; place-content: center; text-align: center; padding: 60px 5%; background: radial-gradient(circle at center, var(--shield-dark) 0%, var(--dark-bg) 80%); }
+        section { padding: 80px 5%; max-width: 1400px; margin: 0 auto; border-top: 1px solid #111; }
+        .section-header { margin-bottom: 50px; text-align: center; }
+
+        /* --- ANYCAST VISUALIZATION (Contrast improved) --- */
+        .anycast-section { background: #000; padding: 100px 5%; border-top: 1px solid #1a1a1a; }
+        .mitigation-placeholder {
+            /* Deeper blue background for visualization */
+            background: #000814; 
+            border: 1px solid #003060; 
+            box-shadow: 0 0 40px rgba(0, 123, 255, 0.2);
+        }
+
+        /* --- HOW IT WORKS (Styled Vertical Timeline) --- */
+        .timeline-container {
+            max-width: 900px;
+            margin: 40px auto;
+            position: relative;
+            /* Flex layout for central vertical line */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* The vertical line (Timeline backbone) */
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #1a1a1a; /* Dark gray line */
+            left: 50%;
+            margin-left: -1.5px;
+            z-index: 1;
+        }
+        
+        .step-item {
+            width: 100%;
+            padding: 0 40px;
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        /* Alternating sides for large screens */
+        .step-item:nth-child(odd) {
+            padding-left: 0;
+            padding-right: calc(50% + 30px); /* Pushes content to the left of the line */
+            text-align: right;
+        }
+
+        .step-item:nth-child(even) {
+            padding-right: 0;
+            padding-left: calc(50% + 30px); /* Pushes content to the right of the line */
+            text-align: left;
+        }
+
+        /* The Step Card */
+        .step-card {
+            background: var(--card-bg);
+            border: 1px solid #222;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .step-card:hover {
+            border-color: var(--shield-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.15);
+        }
+        
+        /* The Circle Marker (Dot on the timeline) */
+        .step-marker {
+            width: 30px;
+            height: 30px;
+            background: var(--shield-blue);
+            border-radius: 50%;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            margin-left: -15px;
+            z-index: 5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: 700;
+            box-shadow: 0 0 0 5px var(--dark-bg), 0 0 10px rgba(0, 123, 255, 0.8);
+        }
+
+        /* Positioning markers correctly for alternating sides */
+        .step-item:nth-child(odd) .step-marker {
+            left: auto;
+            right: 50%;
+            transform: translateX(calc(50% + 1.5px));
+        }
+
+        .step-item:nth-child(even) .step-marker {
+            left: 50%;
+            right: auto;
+            transform: translateX(calc(-50% - 1.5px));
+        }
+        
+        .step-content h4 { font-size: 1.2rem; margin-bottom: 5px; color: var(--shield-blue); }
+        .step-content p { color: #aaa; font-size: 0.95rem; }
+
+        /* --- Mobile Responsiveness for Timeline (Vertical Stack) --- */
+        @media (max-width: 768px) {
+            .timeline-container::before {
+                left: 20px; /* Move vertical line to the left */
+                margin-left: 0;
+            }
+            
+            .step-item {
+                padding: 0 0 0 50px; /* Pad all items to the right of the line */
+                text-align: left;
+            }
+
+            .step-item:nth-child(odd),
+            .step-item:nth-child(even) {
+                padding-left: 50px;
+                padding-right: 0;
+            }
+
+            .step-marker {
+                left: 20px; /* Align marker with the line */
+                margin-left: -15px;
+                transform: none;
+            }
+            
+            .step-item:nth-child(odd) .step-marker {
+                right: auto;
+            }
+            
+            .step-item:nth-child(even) .step-marker {
+                left: 20px;
+                right: auto;
+            }
+
+            .step-content h4 { color: white; } /* Revert color for better contrast on stacked mobile cards */
+        }
+
+
+        /* Remaining Mobile Queries */
+        @media (max-width: 992px) {
+            .mobile-toggle { display: block; }
+            .nav-links { position: fixed; top: 0; right: -100%; height: 100vh; width: 70%; max-width: 300px; background: var(--dark-bg); flex-direction: column; justify-content: center; align-items: center; gap: 40px; transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); z-index: 1001; box-shadow: -5px 0 20px rgba(0,0,0,0.8); }
+            .nav-links.active { right: 0; }
+            .overlay { display: none; opacity: 0; }
+            .overlay.active { display: block; opacity: 1; }
+        }
+        
+        @media (max-width: 600px) {
+            .hero { padding-top: 40px; padding-bottom: 40px; }
+            section { padding: 60px 5%; }
+            .price-row { flex-direction: column; align-items: flex-start; gap: 5px; padding: 15px 20px; }
+            .price-row .value { margin-top: 5px; }
+            .price-row .value span { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay" id="overlay"></div>
+
+    <header>
+        <a href="#" class="brand" data-aos="fade-right" data-aos-duration="600">
+            <img src="https://cdn.axt.co.in/logo.jpg" alt="AXT Logo">
+            AXT<span>Cloud</span>
+        </a>
+
+        <div class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="#features" onclick="closeMenu()">Features</a>
+            <a href="#anycast" onclick="closeMenu()">Shield View</a>
+            <a href="#pricing" onclick="closeMenu()">Pricing</a>
+            <a href="https://shield.axt.co.in/login" class="cta-btn cta-login">Client Login</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div data-aos="fade-up" data-aos-duration="1000">
+            <span class="security-badge" data-aos="zoom-in" data-aos-delay="200"><i class="fa-solid fa-bolt"></i> UXE SHIELD ACTIVE</span>
+            <h1>The Fastest <span class="highlight-shield">On-Demand Protection</span>. Globally.</h1>
+            <p class="subtitle">Next-generation Anycast DDoS mitigation designed for low-latency game servers and mission-critical TCP/UDP applications. Pay-as-you-go simplicity.</p>
+            <div style="margin-top: 30px;" data-aos="fade-up" data-aos-delay="400">
+                <a href="https://shield.axt.co.in/register" class="cta-btn cta-primary" style="padding: 15px 40px; font-size: 1.1rem; margin-right: 15px;">Get Protected Now</a>
+                <a href="#howitworks" class="cta-btn cta-secondary">How It Works</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Core <span class="highlight-shield">Security Features</span></h2>
+            <p>Defense is baked into the infrastructure, not bolted on.</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fa-solid fa-layer-group"></i>
+                <h3>Layer 3/4 Coverage</h3>
+                <p>Comprehensive protection against volumetric attacks (UDP/TCP Floods, SYN, Reflection) that target the network layer.</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <i class="fa-solid fa-rocket"></i>
+                <h3>Low-Latency Anycast</h3>
+                <p>Optimal routing ensures protection doesn't introduce high latency, critical for gaming and real-time applications.</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                <i class="fa-solid fa-lock"></i>
+                <h3>Origin Shielding</h3>
+                <p>Your true server IP remains private and unreachable, eliminating zero-day and direct attacks.</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-delay="400">
+                <i class="fa-solid fa-sliders"></i>
+                <h3>Custom Filtering</h3>
+                <p>Control traffic with customizable firewall rules and protocol filtering to block specific attack vectors.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="anycast-section" id="anycast">
+        <div class="anycast-container" style="max-width: 1200px; margin: 0 auto; text-align: center;">
+            <h2 data-aos="fade-up" class="highlight-shield">Live Mitigation View</h2>
+            <p style="color:#aaa;" data-aos="fade-up" data-aos-delay="100">The Anycast network intercepts and neutralizes threats instantly.</p>
+            
+            <div class="mitigation-placeholder" data-aos="zoom-in" data-aos-delay="300">
+                <div class="attack-stream" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none;"></div>
+                <div class="attack-stream" style="transform: rotate(180deg); position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none;"></div>
+                
+                <i class="fa-solid fa-shield-halved shield-core"></i>
+                <h3 class="mitigation-text mono" style="color: #00d474; font-weight: 600; margin-top: 20px; z-index: 10;">ATTACK TRAFFIC BLOCKED</h3>
+                <p style="color: #555; font-size: 0.85rem; z-index: 10;">Current threat level: HIGH. Mitigation System Status: Nominal.</p>
+            </div>
+        </div>
+    </div>
+    
+    <section id="howitworks">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Setup is <span class="highlight-shield">Three Easy Steps</span></h2>
+            <p>From unprotected to shielded in the time it takes to make coffee.</p>
+        </div>
+        
+        <div class="timeline-container">
+            <div class="step-item" data-aos="fade-right" data-aos-delay="100">
+                <div class="step-marker">1</div>
+                <div class="step-card">
+                    <div class="step-content">
+                        <h4>Activate Service</h4>
+                        <p>Select your plan and enter the IP address of the server you need to protect in the portal.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="step-item" data-aos="fade-left" data-aos-delay="200">
+                <div class="step-marker">2</div>
+                <div class="step-card">
+                    <div class="step-content">
+                        <h4>Receive Protected IP</h4>
+                        <p>The system instantly assigns a highly available, globally load-balanced Anycast IP.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="step-item" data-aos="fade-right" data-aos-delay="300">
+                <div class="step-marker">3</div>
+                <div class="step-card">
+                    <div class="step-content">
+                        <h4>Go Live</h4>
+                        <p>Update your application's DNS or connection string to use the new UXE Shield IP. You are now protected.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing-section" style="border-bottom: 1px solid #111;">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Consumption-Based <span class="highlight-shield">Pricing</span></h2>
+            <p>Flexible, transparent billing where you only pay for what you use.</p>
+        </div>
+
+        <div class="pricing-table" data-aos="zoom-in" data-aos-delay="200">
+            <div class="pricing-header">
+                <h3>UXE Shield Plan Details</h3>
+                <p style="color: #777; font-size: 0.9rem;">No commitment. Scale protection instantly.</p>
+            </div>
+            
+            <div class="price-row">
+                <div class="label"><i class="fa-solid fa-dollar-sign" style="color:var(--shield-blue);"></i> Base IP Fee</div>
+                <div class="value mono">$5.00/mo <span>(Per protected Anycast IP assigned)</span></div>
+            </div>
+            <div class="price-row">
+                <div class="label"><i class="fa-solid fa-upload" style="color:#00d474;"></i> Clean Traffic</div>
+                <div class="value mono">$0.01/GB <span>(Normal, non-attack traffic)</span></div>
+            </div>
+            <div class="price-row">
+                <div class="label"><i class="fa-solid fa-fire-flame-curved" style="color:var(--primary-red);"></i> Attack Traffic</div>
+                <div class="value mono">$0.05/GB <span>(Mitigated DDoS traffic volume)</span></div>
+            </div>
+            
+            <div class="price-action">
+                <a href="https://shield.axt.co.in/register" class="cta-btn cta-primary" style="padding: 15px 40px; font-size: 1.1rem;">Activate Protection</a>
+            </div>
+        </div>
+        
+        <p style="text-align:center; color:#555; margin-top:40px; font-size:0.85rem;" data-aos="fade-up">Need help with setup? Our 24/7 engineering support is ready.</p>
+    </section>
+
+    <div class="copyright-bar" style="padding: 20px 5%; text-align: center; background: #000; color: #444; font-size: 0.8rem;">
+        <p>© 2025 AXT TECHNOLOGYS PVT LTD. All Rights Reserved. | <a href="#" style="color:#777;">Privacy Policy</a></p>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 900,       
+            once: true,          
+            mirror: false,       
+            easing: 'ease-in-out', 
+            anchorPlacement: 'top-bottom', 
+        });
+
+        // Mobile Menu Logic 
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        const overlay = document.getElementById('overlay');
+        const toggleIcon = mobileToggle.querySelector('i');
+
+        function toggleMenu() {
+            const isActive = navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+            
+            if (isActive) {
+                toggleIcon.classList.remove('fa-bars');
+                toggleIcon.classList.add('fa-xmark');
+                document.body.style.overflowY = 'hidden';
+            } else {
+                toggleIcon.classList.remove('fa-xmark');
+                toggleIcon.classList.add('fa-bars');
+                document.body.style.overflowY = '';
+            }
+        }
+
+        function closeMenu() {
+            navLinks.classList.remove('active');
+            overlay.classList.remove('active');
+            toggleIcon.classList.remove('fa-xmark');
+            toggleIcon.classList.add('fa-bars');
+            document.body.style.overflowY = '';
+        }
+
+        mobileToggle.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', closeMenu);
+        
+        // Ensure smooth scrolling for all internal anchors
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                closeMenu(); 
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
