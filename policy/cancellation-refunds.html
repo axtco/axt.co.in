@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Cancellation & Refund Policy | AXTCloud</title>
+    <meta name="description" content="AXTCloud Cancellation and Refund Policy. Details on money-back guarantees, non-refundable services, and cancellation procedures.">
+    <meta name="theme-color" content="#050505">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Cancellation & Refund Policy - AXTCloud">
+    <meta property="og:image" content="https://cdn.axt.co.in/logo.jpg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="icon" type="image/jpg" href="https://cdn.axt.co.in/logo.jpg">
+    <link rel="shortcut icon" type="image/jpg" href="https://cdn.axt.co.in/logo.jpg">
+
+    <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+    <style>
+        :root {
+            --primary-red: #ff0000;
+            --dark-bg: #050505;
+            --card-bg: #111111;
+            --card-hover: #161616;
+            --text-white: #ffffff;
+            --text-muted: #aaaaaa;
+            --border-color: #222;
+            --gradient: linear-gradient(135deg, #ff0000 0%, #8b0000 100%);
+            --header-height: 80px;
+        }
+
+        /* RESET & BASE */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--header-height);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* UTILITIES */
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: var(--header-height);
+            padding: 0 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1002;
+        }
+        .brand span { color: var(--primary-red); }
+        .brand img { height: 40px; border-radius: 6px; }
+
+        /* DESKTOP NAV */
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { font-size: 0.95rem; color: #ccc; font-weight: 500; position: relative; }
+        .nav-links a:hover { color: var(--text-white); }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px;
+            background: var(--primary-red); transition: 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+
+        .cta-btn {
+            background: var(--primary-red);
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+        .cta-btn:hover { background: #cc0000; transform: translateY(-2px); }
+
+        /* MOBILE MENU TOGGLE */
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+            z-index: 1002;
+        }
+
+        /* PAGE TITLE HEADER */
+        .page-header {
+            padding: 150px 5% 60px;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a0000 0%, var(--dark-bg) 70%);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .page-header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 15px;
+        }
+        .page-header p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* CONTENT SECTION */
+        .policy-container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        .policy-block {
+            margin-bottom: 40px;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .policy-block h2 {
+            color: var(--text-white);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .policy-block h2 i { color: var(--primary-red); font-size: 1.2rem; }
+
+        .policy-block p {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .policy-block ul {
+            list-style: none;
+            margin-top: 15px;
+            background: rgba(255,255,255,0.02);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .policy-block ul li {
+            margin-bottom: 10px;
+            color: #ccc;
+            position: relative;
+            padding-left: 25px;
+        }
+        .policy-block ul li::before {
+            content: '•';
+            color: var(--primary-red);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .highlight-box {
+            background: rgba(255, 0, 0, 0.05);
+            border-left: 3px solid var(--primary-red);
+            padding: 15px;
+            margin-top: 20px;
+            color: #ddd;
+            font-size: 0.9rem;
+        }
+
+        /* FOOTER STYLES */
+        footer {
+            background: #080808;
+            border-top: 1px solid #222;
+            padding: 80px 5%;
+            color: #666;
+            margin-top: auto;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-brand { display: flex; flex-direction: column; gap: 15px; }
+        .footer-brand img { opacity: 0.5; filter: grayscale(100%); }
+        
+        .footer-col h4 { color: #fff; margin-bottom: 20px; font-size: 1.1rem; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: #999; font-size: 0.9rem; transition: 0.3s; }
+        .footer-col ul li a:hover { color: var(--primary-red); padding-left: 5px; }
+        
+        .copyright-bar {
+            border-top: 1px solid #222;
+            margin-top: 60px;
+            padding-top: 30px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        /* MOBILE SPECIFIC */
+        @media (max-width: 992px) {
+            .mobile-toggle { display: block; }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%; 
+                height: 100vh;
+                width: 75%;
+                max-width: 300px;
+                background: #111;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 40px;
+                transition: 0.4s ease;
+                z-index: 1001;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+            }
+            .nav-links.active { right: 0; }
+            .nav-links a { font-size: 1.2rem; color: #fff; }
+            
+            .overlay {
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.7);
+                z-index: 1000;
+                display: none;
+                opacity: 0; transition: 0.3s;
+            }
+            .overlay.active { display: block; opacity: 1; }
+            
+            .footer-container { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .footer-container { grid-template-columns: 1fr; text-align: center; }
+            .page-header h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay" id="overlay"></div>
+
+    <header>
+        <a href="index.html" class="brand">
+            <img src="https://cdn.axt.co.in/logo.jpg" alt="AXT Logo" width="40" height="40">
+            <div>AXT<span>Cloud</span></div>
+        </a>
+
+        <div class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="vps-hosting.html">VPS</a>
+            <a href="dedicated-servers.html">Dedicated</a>
+            <a href="minecraft-hosting.html">Minecraft</a>
+            <a href="fivem-hosting.html">FiveM</a>
+            <a href="info/our-infrastructure.html">Infrastructure</a>
+            <a href="mailto:sales@mail.axt.co.in" class="cta-btn">Contact Sales</a>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <h1>Cancellation & <span style="color:var(--primary-red);">Refunds</span></h1>
+        <p>Transparent policies regarding service cancellations and money-back guarantees.</p>
+    </section>
+
+    <section class="policy-container">
+        
+        <div class="policy-block">
+            <h2><i class="fa-solid fa-ban"></i> Cancellation Policy</h2>
+            <p>Customers have the right to cancel their services at any time. Cancellations must be submitted through the Client Area to ensure security and verification.</p>
+            <p>When cancelling, you may choose between two types of cancellation:</p>
+            <ul>
+                <li><strong>Immediate Cancellation:</strong> The service will be terminated immediately, and all data will be permanently deleted. This action is irreversible.</li>
+                <li><strong>End of Billing Period:</strong> The service will remain active until the paid period expires, after which it will be automatically terminated.</li>
+            </ul>
+            <div class="highlight-box">
+                <i class="fa-solid fa-circle-exclamation"></i> <strong>Data Loss Warning:</strong> AXTCloud is not responsible for data loss once a cancellation request is processed. Please download all backups before cancelling.
+            </div>
+        </div>
+
+        <div class="policy-block">
+            <h2><i class="fa-solid fa-hand-holding-dollar"></i> Refund Eligibility</h2>
+            <p>We offer a limited Money-Back Guarantee for new customers to test our services. Refund requests must be submitted via a support ticket within the specified timeframe.</p>
+            
+            <h3 style="font-size: 1.1rem; color: #fff; margin-top: 20px; margin-bottom: 10px;">Eligible Services (3-Day Guarantee):</h3>
+            <p>The following services are eligible for a full refund within <strong>3 days (72 hours)</strong> of the initial order:</p>
+            <ul>
+                <li>Cloud VPS (Linux & Windows)</li>
+                <li>Minecraft Hosting</li>
+                <li>FiveM Hosting</li>
+                <li>Web Hosting</li>
+            </ul>
+
+            <h3 style="font-size: 1.1rem; color: #fff; margin-top: 20px; margin-bottom: 10px;">Non-Refundable Services:</h3>
+            <p>Due to the nature of costs involved in provisioning, the following are <strong>strictly non-refundable</strong>:</p>
+            <ul>
+                <li><strong>Dedicated Servers:</strong> Due to physical hardware allocation and setup labor.</li>
+                <li><strong>IP Addresses:</strong> Additional dedicated IPs.</li>
+                <li><strong>Software Licenses:</strong> (e.g., cPanel, Windows Server, Plesk).</li>
+                <li><strong>Domain Names:</strong> Registration fees are paid directly to the registry.</li>
+                <li>Setup Fees and Migration Fees.</li>
+            </ul>
+        </div>
+
+        <div class="policy-block">
+            <h2><i class="fa-brands fa-bitcoin"></i> Payment Methods</h2>
+            <p>Refunds are processed to the original method of payment whenever possible.</p>
+            <ul>
+                <li><strong>Credit Cards / PayPal / UPI:</strong> Eligible for direct refunds to the source account.</li>
+                <li><strong>Cryptocurrency:</strong> Due to exchange rate volatility and transaction fees, crypto payments are generally non-refundable. In exceptional cases approved by management, refunds may be issued as <strong>Account Credit</strong> only.</li>
+            </ul>
+        </div>
+
+        <div class="policy-block">
+            <h2><i class="fa-solid fa-gavel"></i> Abuse & ToS Violations</h2>
+            <p>Our Money-Back Guarantee is void if a user violates our Terms of Service (ToS) or Acceptable Use Policy (AUP).</p>
+            <p>No refunds will be issued if:</p>
+            <ul>
+                <li>The service was terminated due to illegal activity (Phishing, Fraud, Scanning).</li>
+                <li>The service was used for prohibited activities (Mining, DDoS attacks, Spam).</li>
+                <li>The IP address was blacklisted due to client actions.</li>
+            </ul>
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="trustpilot-widget" data-locale="en-US" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="69206b7a2a6043b23f4dfbb5" data-style-height="52px" data-style-width="100%" data-token="18287e79-0319-4355-92cc-3b2b74f9821f">
+            <a href="https://www.trustpilot.com/review/axt.co.in" target="_blank" rel="noopener">Trustpilot</a>
+        </div>
+        <div style="margin-bottom: 40px;"></div>
+
+        <div class="footer-container">
+            
+            <div class="footer-brand">
+                <div class="brand" style="filter: grayscale(100%); opacity: 0.5;">
+                    <img src="https://cdn.axt.co.in/logo.jpg" alt="AXT Logo" width="30">
+                    <div>AXT<span>Cloud</span></div>
+                </div>
+                <p style="margin-top:15px; font-size:0.9rem;">AXT TECHNOLOGYS PVT LTD provides premium cloud infrastructure, dedicated servers, and advanced security solutions.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Products</h4>
+                <ul>
+                    <li><a href="vps-hosting.html">Cloud VPS</a></li>
+                    <li><a href="dedicated-servers.html">Dedicated Servers</a></li>
+                    <li><a href="minecraft-hosting.html">Minecraft Hosting</a></li>
+                    <li><a href="fivem-hosting.html">FiveM Hosting</a></li>
+                    <li><a href="database-hosting.html">Managed Database</a></li>
+                    <li><a href="discordbot-hosting.html">Bot Hosting</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="email-hosting.html">Email Hosting</a></li>
+                    <li><a href="dedicated-ip.html">Dedicated IP</a></li>
+                    <li><a href="openvpn.html">OpenVPN Server</a></li>
+                    <li><a href="info/our-infrastructure.html">Infrastructure</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="mailto:sales@mail.axt.co.in">Sales Team</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="copyright-bar">
+            <p>© <span id="year"></span> AXT TECHNOLOGYS PVT LTD. All Rights Reserved.</p>
+            <p style="color:#444; margin-top:5px;">Unit 14B, World Trade Center, Brigade Gateway Campus, Bengaluru – 560055</p>
+        </div>
+    </footer>
+
+    <script>
+        // Year Update
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Logic
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        const overlay = document.getElementById('overlay');
+        const toggleIcon = mobileToggle.querySelector('i');
+
+        function toggleMenu() {
+            const isActive = navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+            
+            if (isActive) {
+                toggleIcon.classList.remove('fa-bars');
+                toggleIcon.classList.add('fa-xmark');
+                document.body.style.overflow = 'hidden';
+            } else {
+                toggleIcon.classList.remove('fa-xmark');
+                toggleIcon.classList.add('fa-bars');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function closeMenu() {
+            navLinks.classList.remove('active');
+            overlay.classList.remove('active');
+            toggleIcon.classList.remove('fa-xmark');
+            toggleIcon.classList.add('fa-bars');
+            document.body.style.overflow = '';
+        }
+
+        mobileToggle.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', closeMenu);
+    </script>
+
+</body>
+</html>
