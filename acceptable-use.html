@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Acceptable Use Policy | AXTCloud</title>
+    <meta name="description" content="Acceptable Use Policy (AUP) for AXTCloud. Guidelines on prohibited content, network abuse, and resource usage.">
+    <meta name="theme-color" content="#050505">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="icon" type="image/jpg" href="https://cdn.axt.co.in/logo.jpg">
+
+    <style>
+        :root {
+            --primary-red: #ff0000;
+            --dark-bg: #050505;
+            --card-bg: #111111;
+            --text-white: #ffffff;
+            --text-muted: #aaaaaa;
+            --border-color: #222;
+            --gradient: linear-gradient(135deg, #ff0000 0%, #8b0000 100%);
+            --header-height: 80px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; scroll-padding-top: var(--header-height); }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-white);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* UTILITIES */
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        .highlight { color: var(--primary-red); }
+
+        /* ANIMATIONS */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* HEADER */
+        header {
+            position: fixed; top: 0; width: 100%; height: var(--header-height);
+            padding: 0 5%; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .brand { font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 10px; z-index: 1002; }
+        .brand span { color: var(--primary-red); }
+        .brand img { height: 40px; border-radius: 6px; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { font-size: 0.95rem; color: #ccc; font-weight: 500; }
+        .nav-links a:hover { color: var(--text-white); }
+        .cta-btn {
+            background: var(--primary-red); padding: 10px 24px; border-radius: 8px;
+            font-weight: 600; color: white !important; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+        }
+        .cta-btn:hover { background: #cc0000; transform: translateY(-2px); }
+        .mobile-toggle { display: none; font-size: 1.5rem; color: #fff; cursor: pointer; z-index: 1002; }
+
+        /* HERO */
+        .hero {
+            padding: 140px 20px 60px;
+            text-align: center;
+            background: radial-gradient(circle at top, #1a0000 0%, var(--dark-bg) 70%);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 700; margin-bottom: 15px; }
+        .hero p { color: var(--text-muted); }
+
+        /* POLICY CONTENT */
+        .policy-container {
+            max-width: 900px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .policy-section {
+            margin-bottom: 50px;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .policy-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #fff;
+            border-left: 4px solid var(--primary-red);
+            padding-left: 15px;
+        }
+
+        .policy-section h3 {
+            font-size: 1.1rem;
+            margin: 25px 0 10px;
+            color: #ddd;
+        }
+
+        .policy-section p {
+            color: #aaa;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .policy-section ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: #aaa;
+        }
+
+        .policy-section li { margin-bottom: 8px; font-size: 0.95rem; }
+
+        .contact-box {
+            background: linear-gradient(to right, #111, #1a0505);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .contact-box a {
+            color: var(--primary-red);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* FOOTER */
+        footer { background: #080808; border-top: 1px solid #222; padding: 60px 20px; text-align: center; color: #666; }
+        .footer-links { margin: 25px 0; font-size: 0.9rem; }
+        .footer-links a { color: #999; padding: 0 10px; }
+        .footer-links a:hover { color: var(--primary-red); }
+
+        /* MOBILE */
+        @media (max-width: 992px) {
+            .mobile-toggle { display: block; }
+            .nav-links {
+                position: fixed; top: 0; right: -100%; height: 100vh; width: 75%; max-width: 300px;
+                background: #111; flex-direction: column; justify-content: center; gap: 40px;
+                transition: 0.4s ease; z-index: 1001; box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+            }
+            .nav-links.active { right: 0; }
+            .overlay {
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.7); z-index: 1000; display: none; opacity: 0; transition: 0.3s;
+            }
+            .overlay.active { display: block; opacity: 1; }
+            .policy-section { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay" id="overlay"></div>
+
+    <header>
+        <a href="index.html" class="brand">
+            <img src="https://cdn.axt.co.in/logo.jpg" alt="AXT Logo">
+            <div>AXT<span>Cloud</span></div>
+        </a>
+        <div class="mobile-toggle" id="mobileToggle"><i class="fa-solid fa-bars"></i></div>
+        <nav class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="vps-hosting.html">VPS</a>
+            <a href="cloud-hosting.html">Cloud</a>
+            <a href="dedicated-servers.html">Dedicated</a>
+            <a href="about.html">About Us</a>
+            <a href="mailto:sales@mail.axt.co.in" class="cta-btn">Contact Sales</a>
+        </nav>
+    </header>
+
+    <div class="hero reveal">
+        <h1>Acceptable <span class="highlight">Use Policy</span></h1>
+        <p>Last Updated: <span id="lastUpdated">November 2025</span></p>
+    </div>
+
+    <div class="policy-container">
+        
+        <div class="policy-section reveal">
+            <h2>1. General Policy</h2>
+            <p>This Acceptable Use Policy (AUP) governs the use of all services provided by AXT TECHNOLOGYS PRIVATE LIMITED ("AXTCloud"). By using our services, you agree to comply with this policy. The goal of this AUP is to protect our network, our customers, and the Internet community from irresponsible or illegal activity.</p>
+            <p>We reserve the right to modify this policy at any time. Violations of this AUP may result in the immediate suspension or termination of your account without refund.</p>
+        </div>
+
+        <div class="policy-section reveal">
+            <h2>2. Prohibited Content</h2>
+            <p>You may not use AXTCloud services to host, store, or distribute any of the following:</p>
+            <ul>
+                <li><strong>Illegal Content:</strong> Material that violates the laws of India or the jurisdiction where the server is located, including child pornography (CSAM), pirated software, or copyrighted material without authorization.</li>
+                <li><strong>Malicious Software:</strong> Viruses, worms, trojans, ransomware, or any software intended to damage or disrupt systems.</li>
+                <li><strong>Phishing/Fraud:</strong> Fake banking sites, ponzi schemes, or deceptive content intended to steal personal information.</li>
+                <li><strong>Terrorist Content:</strong> Material that promotes terrorism, violence, or hate speech.</li>
+            </ul>
+        </div>
+
+        <div class="policy-section reveal">
+            <h2>3. Network Abuse</h2>
+            <p>Any activity that disrupts, degrades, or interferes with the integrity of our network or third-party networks is strictly prohibited:</p>
+            <h3>3.1 DDoS & Attacks</h3>
+            <p>Launching Denial of Service (DoS) or Distributed Denial of Service (DDoS) attacks, or operating "booter" services/stressers, is strictly forbidden.</p>
+            
+            <h3>3.2 Scanning & Probing</h3>
+            <p>Port scanning, vulnerability scanning, or unauthorized penetration testing of external networks is prohibited.</p>
+            
+            <h3>3.3 IP Spoofing</h3>
+            <p>Forging IP packet headers or misrepresenting the source of network traffic.</p>
+        </div>
+
+        <div class="policy-section reveal">
+            <h2>4. Email & Spam</h2>
+            <p>AXTCloud has a zero-tolerance policy for Unsolicited Commercial Email (SPAM):</p>
+            <ul>
+                <li>Sending bulk emails to recipients who have not explicitly opted in is prohibited.</li>
+                <li>Hosting "spamvertised" websites is prohibited.</li>
+                <li>Operating open mail relays or unauthenticated SMTP services is prohibited.</li>
+            </ul>
+            <p>If your IP is listed on a major blocklist (e.g., Spamhaus) due to your activity, your service may be suspended immediately.</p>
+        </div>
+
+        <div class="policy-section reveal">
+            <h2>5. Resource Usage (Fair Use)</h2>
+            <p>For shared hosting and cloud environments, users must not monopolize system resources:</p>
+            <ul>
+                <li><strong>CPU/RAM:</strong> Utilizing 100% of allocated CPU resources for extended periods (e.g., cryptocurrency mining) is not permitted on shared/VPS plans unless specified.</li>
+                <li><strong>Disk I/O:</strong> Excessive disk read/write operations that degrade performance for other users are prohibited.</li>
+            </ul>
+        </div>
+
+        <div class="policy-section reveal">
+            <h2>6. Security Violations</h2>
+            <p>You are responsible for the security of your account and servers. You must not:</p>
+            <ul>
+                <li>Attempt to bypass authentication or security measures of any system.</li>
+                <li>Use weak passwords that compromise the integrity of the server.</li>
+                <li>Host open proxies or anonymous VPNs that facilitate illegal activity.</li>
+            </ul>
+        </div>
+
+        <div class="policy-section reveal">
+            <h2>7. Reporting Abuse</h2>
+            <p>If you witness a violation of this policy or wish to report abuse originating from an AXTCloud IP address, please contact our Legal & Abuse Department immediately with relevant logs and evidence.</p>
+            
+            <div class="contact-box">
+                <i class="fa-solid fa-triangle-exclamation" style="color:var(--primary-red); font-size: 1.5rem; margin-bottom:10px;"></i>
+                <p style="margin-bottom: 5px; color:#fff;">Report Abuse</p>
+                <a href="mailto:legal@mail.axt.co.in">legal@mail.axt.co.in</a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="brand" style="justify-content: center; margin-bottom: 20px; filter: grayscale(100%); opacity: 0.5;">
+            <img src="https://cdn.axt.co.in/logo.jpg" alt="AXT Logo" width="40" height="40">
+            <div>AXT<span>Cloud</span></div>
+        </div>
+        <p>© <span id="year"></span> AXT TECHNOLOGYS PVT LTD. All Rights Reserved.</p>
+        <div class="footer-links">
+            <a href="about.html">About Us</a> | 
+            <a href="privacy.html">Privacy Policy</a> | 
+            <a href="terms.html">Terms of Service</a> |
+            <a href="acceptable-use.html" style="color:var(--primary-red);">AUP</a>
+        </div>
+        <p style="font-size: 0.85rem; color: #444;">Unit 14B, World Trade Center, Bengaluru – 560055</p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Dynamic Date
+        const date = new Date();
+        const month = date.toLocaleString('default', { month: 'long' });
+        const year = date.getFullYear();
+        document.getElementById('lastUpdated').textContent = `${month} ${year}`;
+
+        // Mobile Menu
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        const overlay = document.getElementById('overlay');
+        const toggleIcon = mobileToggle.querySelector('i');
+
+        function toggleMenu() {
+            const isActive = navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+            if (isActive) {
+                toggleIcon.classList.remove('fa-bars');
+                toggleIcon.classList.add('fa-xmark');
+                document.body.style.overflow = 'hidden';
+            } else {
+                toggleIcon.classList.remove('fa-xmark');
+                toggleIcon.classList.add('fa-bars');
+                document.body.style.overflow = '';
+            }
+        }
+        function closeMenu() {
+            navLinks.classList.remove('active');
+            overlay.classList.remove('active');
+            toggleIcon.classList.remove('fa-xmark');
+            toggleIcon.classList.add('fa-bars');
+            document.body.style.overflow = '';
+        }
+        mobileToggle.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', closeMenu);
+
+        // Scroll Reveal
+        if ('IntersectionObserver' in window) {
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+        } else {
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+        }
+    </script>
+</body>
+</html>

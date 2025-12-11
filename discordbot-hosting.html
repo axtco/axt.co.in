@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Discord Bot Hosting | AXTCloud</title>
+    <meta name="description" content="Keep your Discord bot online 24/7. High-performance hosting for Node.js, Python, and Java bots with DDoS protection.">
+    <meta name="theme-color" content="#050505">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="icon" type="image/jpg" href="https://cdn.axt.co.in/logo.jpg">
+
+    <style>
+        :root {
+            --primary-red: #ff0000;
+            --dark-bg: #050505;
+            --card-bg: #111111;
+            --card-hover: #161616;
+            --text-white: #ffffff;
+            --text-muted: #aaaaaa;
+            --border-color: #222;
+            --gradient: linear-gradient(135deg, #ff0000 0%, #8b0000 100%);
+            --header-height: 80px;
+            --discord-color: #5865F2;
+            --success: #00d474;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; scroll-padding-top: var(--header-height); }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* UTILITIES */
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        .highlight { color: var(--primary-red); }
+
+        /* ANIMATIONS */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* HEADER */
+        header {
+            position: fixed; top: 0; width: 100%; height: var(--header-height);
+            padding: 0 5%; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .brand { font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 10px; z-index: 1002; }
+        .brand span { color: var(--primary-red); }
+        .brand img { height: 40px; border-radius: 6px; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { font-size: 0.95rem; color: #ccc; font-weight: 500; }
+        .nav-links a:hover { color: var(--text-white); }
+        .cta-btn {
+            background: var(--primary-red); padding: 10px 24px; border-radius: 8px;
+            font-weight: 600; color: white !important; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+        }
+        .cta-btn:hover { background: #cc0000; transform: translateY(-2px); }
+        .mobile-toggle { display: none; font-size: 1.5rem; color: #fff; cursor: pointer; z-index: 1002; }
+
+        /* HERO */
+        .hero {
+            padding: 140px 20px 60px;
+            text-align: center;
+            background: radial-gradient(circle at top, #1a0000 0%, var(--dark-bg) 70%);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700; margin-bottom: 15px; }
+        .hero h1 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { color: var(--text-muted); max-width: 700px; margin: 0 auto 40px; font-size: 1.1rem; }
+        .hero-btns { display: flex; gap: 20px; justify-content: center; }
+        .hero-btn-sec { padding: 12px 30px; border: 1px solid #333; border-radius: 8px; font-weight: 600; }
+        .hero-btn-sec:hover { background: #111; border-color: #fff; }
+
+        /* LANGUAGE ICONS */
+        .lang-strip {
+            display: flex; justify-content: center; gap: 40px; margin-top: 60px; flex-wrap: wrap;
+            opacity: 0.7;
+        }
+        .lang-icon { font-size: 2.5rem; color: #555; transition: 0.3s; }
+        .lang-icon:hover { color: #fff; transform: scale(1.1); }
+
+        /* FEATURES GRID */
+        .features-section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.2rem; margin-bottom: 10px; }
+        
+        .features-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
+        }
+        .feat-card {
+            background: var(--card-bg); padding: 30px; border-radius: 12px; border: 1px solid var(--border-color);
+            transition: 0.3s;
+        }
+        .feat-card:hover { border-color: var(--primary-red); transform: translateY(-5px); }
+        .feat-card i { font-size: 2rem; color: var(--primary-red); margin-bottom: 15px; }
+        .feat-card h3 { font-size: 1.1rem; margin-bottom: 10px; }
+        .feat-card p { font-size: 0.9rem; color: #999; }
+
+        /* PRICING SECTION */
+        .pricing-section { padding: 50px 20px 100px; }
+        
+        /* CONTROLS WRAPPER */
+        .controls-wrapper {
+            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 60px;
+        }
+
+        /* BILLING TOGGLE */
+        .billing-toggle {
+            display: flex; justify-content: center; align-items: center; gap: 5px;
+            background: #111; padding: 5px; border-radius: 50px;
+            border: 1px solid #333;
+        }
+        .cycle-btn {
+            padding: 10px 25px; border-radius: 40px; cursor: pointer; font-size: 0.9rem; font-weight: 500; color: #888; transition: 0.3s;
+        }
+        .cycle-btn.active { background: var(--primary-red); color: #fff; font-weight: 600; }
+        .cycle-btn:hover:not(.active) { color: #fff; }
+        .discount-tag { font-size: 0.75rem; background: #ffeb3b; color: #000; padding: 2px 8px; border-radius: 4px; font-weight: 700; margin-left: 5px; }
+
+        /* PRICING GRID */
+        .pricing-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px;
+            max-width: 1400px; margin: 0 auto;
+        }
+        
+        .plan-card {
+            background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px;
+            padding: 0; overflow: hidden; display: flex; flex-direction: column; transition: 0.3s;
+            position: relative;
+        }
+        .plan-card.popular { border-color: var(--discord-color); box-shadow: 0 0 20px rgba(88, 101, 242, 0.15); }
+        .plan-card:hover { transform: translateY(-5px); border-color: #444; }
+        .popular-badge {
+            background: var(--discord-color); color: #fff; text-align: center; font-size: 0.8rem; font-weight: 600; padding: 5px;
+        }
+
+        /* Card Header */
+        .plan-header { padding: 30px 30px 20px; border-bottom: 1px solid #222; text-align: center; }
+        .plan-name { font-size: 1.5rem; font-weight: 700; margin-bottom: 5px; }
+        .plan-desc { font-size: 0.9rem; color: #888; height: 45px; } 
+        
+        .price-display { margin: 20px 0; }
+        .currency { vertical-align: top; font-size: 1.2rem; font-weight: 600; }
+        .amount { font-size: 2.5rem; font-weight: 700; color: #fff; }
+        .period { color: #888; font-size: 0.9rem; }
+        
+        .select-btn {
+            display: block; width: 100%; padding: 12px; background: transparent; border: 1px solid var(--primary-red);
+            color: #fff; border-radius: 8px; font-weight: 600; transition: 0.3s; margin-top: 10px;
+        }
+        .select-btn:hover { background: var(--primary-red); }
+
+        /* Card Body */
+        .plan-body { padding: 30px; flex-grow: 1; }
+        
+        .group-title { font-size: 0.8rem; text-transform: uppercase; color: #666; letter-spacing: 1px; margin: 20px 0 10px; font-weight: 700; border-bottom: 1px solid #222; padding-bottom: 5px; }
+        .group-title:first-child { margin-top: 0; }
+
+        .feature-list li {
+            display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; font-size: 0.9rem; color: #ccc; line-height: 1.4;
+        }
+        .feature-list i { color: var(--success); margin-top: 4px; flex-shrink: 0; }
+        .feature-list li.tech-detail { font-size: 0.85rem; color: #999; }
+        .feature-list li.tech-detail i { color: #666; font-size: 0.8rem; }
+
+        /* FOOTER */
+        footer { background: #080808; border-top: 1px solid #222; padding: 80px 5%; color: #666; }
+        .footer-container {
+            display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; max-width: 1400px; margin: 0 auto;
+        }
+        .footer-col h4 { color: #fff; margin-bottom: 20px; font-size: 1.1rem; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: #999; font-size: 0.9rem; transition: 0.3s; }
+        .footer-col ul li a:hover { color: var(--primary-red); padding-left: 5px; }
+        .copyright-bar { border-top: 1px solid #222; margin-top: 60px; padding-top: 30px; text-align: center; font-size: 0.85rem; }
+
+        /* MOBILE */
+        @media (max-width: 992px) {
+            .mobile-toggle { display: block; }
+            .nav-links {
+                position: fixed; top: 0; right: -100%; height: 100vh; width: 75%; max-width: 300px;
+                background: #111; flex-direction: column; justify-content: center; gap: 40px;
+                transition: 0.4s ease; z-index: 1001; box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+            }
+            .nav-links.active { right: 0; }
+            .overlay {
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.7); z-index: 1000; display: none; opacity: 0; transition: 0.3s;
+            }
+            .overlay.active { display: block; opacity: 1; }
+            .footer-container { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2.5rem; }
+            .footer-container { grid-template-columns: 1fr; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay" id="overlay"></div>
+
+    <header>
+        <a href="index.html" class="brand">
+            <img src="https://cdn.axt.co.in/logo.jpg" alt="AXT Logo">
+            <div>AXT<span>Cloud</span></div>
+        </a>
+        <div class="mobile-toggle" id="mobileToggle"><i class="fa-solid fa-bars"></i></div>
+        <nav class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="vps-hosting.html">VPS</a>
+            <a href="cloud-hosting.html">Cloud</a>
+            <a href="discordbot-hosting.html" style="color:var(--primary-red);">Bot Hosting</a>
+            <a href="dedicated-servers.html">Dedicated</a>
+            <a href="mailto:sales@mail.axt.co.in" class="cta-btn">Contact Sales</a>
+        </nav>
+    </header>
+
+    <div class="hero reveal">
+        <h1>Keep Your Bot Online <span class="highlight">24/7</span></h1>
+        <p>Premium, always-online hosting for Discord bots. Supports Node.js, Python, Java, and more with DDoS protection included.</p>
+        
+        <div class="hero-btns">
+            <a href="#plans" class="cta-btn">View Plans</a>
+            <a href="#features" class="hero-btn-sec">Features</a>
+        </div>
+
+        <div class="lang-strip">
+            <i class="fa-brands fa-node-js lang-icon" title="Node.js"></i>
+            <i class="fa-brands fa-python lang-icon" title="Python"></i>
+            <i class="fa-brands fa-java lang-icon" title="Java"></i>
+            <i class="fa-brands fa-golang lang-icon" title="Go"></i>
+            <i class="fa-brands fa-discord lang-icon" style="color:var(--discord-color);" title="Discord"></i>
+        </div>
+    </div>
+
+    <section id="features" class="features-section reveal">
+        <div class="section-header">
+            <h2>Built for <span class="highlight">Developers</span></h2>
+            <p>Everything you need to deploy and manage your bot effortlessly.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feat-card">
+                <i class="fa-solid fa-clock"></i>
+                <h3>Always Online</h3>
+                <p>99.99% Uptime guarantee. No more sleeping bots or restarts.</p>
+            </div>
+            <div class="feat-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>DDoS Protection</h3>
+                <p>Advanced protection against attacks to keep your community safe.</p>
+            </div>
+            <div class="feat-card">
+                <i class="fa-solid fa-terminal"></i>
+                <h3>Easy Panel</h3>
+                <p>Manage files, view logs, and restart your bot from a web dashboard.</p>
+            </div>
+            <div class="feat-card">
+                <i class="fa-solid fa-microchip"></i>
+                <h3>NVMe Storage</h3>
+                <p>Lightning-fast storage for database-heavy music or economy bots.</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="plans" class="pricing-section reveal">
+        <div class="section-header">
+            <h2>Simple <span class="highlight">Pricing</span></h2>
+            <p>Scale as your server grows</p>
+        </div>
+        
+        <div class="controls-wrapper">
+            <div class="billing-toggle">
+                <div class="cycle-btn active" data-btn-type="currency" onclick="setCurrency('USD', this)">USD ($)</div>
+                <div class="cycle-btn" data-btn-type="currency" onclick="setCurrency('INR', this)">INR (₹)</div>
+            </div>
+
+            <div class="billing-toggle">
+                <div class="cycle-btn active" data-btn-type="cycle" onclick="setCycle(0, this)">Monthly</div>
+                <div class="cycle-btn" data-btn-type="cycle" onclick="setCycle(1, this)">1 Year <span class="discount-tag">-40%</span></div>
+                <div class="cycle-btn" data-btn-type="cycle" onclick="setCycle(2, this)">3 Year <span class="discount-tag">-70%</span></div>
+            </div>
+        </div>
+
+        <div class="pricing-grid">
+            
+            <div class="plan-card">
+                <div class="plan-header">
+                    <div class="plan-name">Starter Bot</div>
+                    <div class="plan-desc">Perfect for simple moderation or log bots.</div>
+                    <div class="price-display">
+                        <span class="currency">$</span><span class="amount" data-usd="1.50" data-inr="129.00">1.50</span>
+                        <div class="period">/mo</div>
+                    </div>
+                    <a href="mailto:sales@mail.axt.co.in?subject=Order Starter Bot" class="select-btn">Choose Starter</a>
+                </div>
+                <div class="plan-body">
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-memory"></i> 512MB RAM</li>
+                        <li><i class="fa-solid fa-microchip"></i> 50% CPU Core</li>
+                        <li><i class="fa-solid fa-hard-drive"></i> 5GB NVMe Storage</li>
+                        <li><i class="fa-solid fa-network-wired"></i> Unmetered Bandwidth</li>
+                        <li class="tech-detail"><i class="fa-solid fa-check"></i> 24/7 Support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="plan-card popular">
+                <div class="popular-badge">BEST FOR MUSIC BOTS</div>
+                <div class="plan-header">
+                    <div class="plan-name">Standard Bot</div>
+                    <div class="plan-desc">Ideal for music bots and medium servers.</div>
+                    <div class="price-display">
+                        <span class="currency">$</span><span class="amount" data-usd="3.00" data-inr="249.00">3.00</span>
+                        <div class="period">/mo</div>
+                    </div>
+                    <a href="mailto:sales@mail.axt.co.in?subject=Order Standard Bot" class="select-btn" style="background:var(--discord-color); border-color:var(--discord-color);">Choose Standard</a>
+                </div>
+                <div class="plan-body">
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-memory"></i> 2GB RAM</li>
+                        <li><i class="fa-solid fa-microchip"></i> 100% CPU Core</li>
+                        <li><i class="fa-solid fa-hard-drive"></i> 10GB NVMe Storage</li>
+                        <li><i class="fa-solid fa-network-wired"></i> Unmetered Bandwidth</li>
+                        <li class="tech-detail"><i class="fa-solid fa-check"></i> 24/7 Support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="plan-card">
+                <div class="plan-header">
+                    <div class="plan-name">Pro Bot</div>
+                    <div class="plan-desc">For large communities and economy bots.</div>
+                    <div class="price-display">
+                        <span class="currency">$</span><span class="amount" data-usd="6.00" data-inr="499.00">6.00</span>
+                        <div class="period">/mo</div>
+                    </div>
+                    <a href="mailto:sales@mail.axt.co.in?subject=Order Pro Bot" class="select-btn">Choose Pro</a>
+                </div>
+                <div class="plan-body">
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-memory"></i> 4GB RAM</li>
+                        <li><i class="fa-solid fa-microchip"></i> 200% CPU Core</li>
+                        <li><i class="fa-solid fa-hard-drive"></i> 20GB NVMe Storage</li>
+                        <li><i class="fa-solid fa-network-wired"></i> Unmetered Bandwidth</li>
+                        <li class="tech-detail"><i class="fa-solid fa-check"></i> Priority Support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="plan-card">
+                <div class="plan-header">
+                    <div class="plan-name">Extreme Bot</div>
+                    <div class="plan-desc">Heavy sharding and massive databases.</div>
+                    <div class="price-display">
+                        <span class="currency">$</span><span class="amount" data-usd="12.00" data-inr="999.00">12.00</span>
+                        <div class="period">/mo</div>
+                    </div>
+                    <a href="mailto:sales@mail.axt.co.in?subject=Order Extreme Bot" class="select-btn">Choose Extreme</a>
+                </div>
+                <div class="plan-body">
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-memory"></i> 8GB RAM</li>
+                        <li><i class="fa-solid fa-microchip"></i> 400% CPU Core</li>
+                        <li><i class="fa-solid fa-hard-drive"></i> 40GB NVMe Storage</li>
+                        <li><i class="fa-solid fa-network-wired"></i> Unmetered Bandwidth</li>
+                        <li class="tech-detail"><i class="fa-solid fa-check"></i> Priority Support</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            
+            <div class="footer-brand">
+                <div class="brand" style="filter: grayscale(100%); opacity: 0.5;">
+                    <img src="https://cdn.axt.co.in/logo.jpg" alt="AXT Logo" width="30">
+                    <div>AXT<span>Cloud</span></div>
+                </div>
+                <p style="margin-top:15px; font-size:0.9rem;">AXT TECHNOLOGYS PVT LTD provides premium cloud infrastructure, dedicated servers, and advanced security solutions.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Products</h4>
+                <ul>
+                    <li><a href="cloud-hosting.html">Cloud Hosting</a></li>
+                    <li><a href="vps-hosting.html">VPS Hosting</a></li>
+                    <li><a href="dedicated-servers.html">Dedicated Servers</a></li>
+                    <li><a href="discordbot-hosting.html">Discord Bot Hosting</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="mailto:sales@mail.axt.co.in">Sales Team</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="acceptable-use.html">AUP</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="copyright-bar">
+            <p>© <span id="year"></span> AXT TECHNOLOGYS PVT LTD. All Rights Reserved.</p>
+            <p style="color:#444; margin-top:5px;">Unit 14B, World Trade Center, Brigade Gateway Campus, Bengaluru – 560055</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // GLOBAL STATE
+        let currentCurrency = 'USD';
+        let currentCycleIndex = 0;
+
+        // CURRENCY TOGGLE
+        function setCurrency(currency, btn) {
+            currentCurrency = currency;
+            
+            // Update Buttons UI
+            document.querySelectorAll('[data-btn-type="currency"]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Update Symbols
+            const symbol = currency === 'USD' ? '$' : '₹';
+            document.querySelectorAll('.currency').forEach(el => el.textContent = symbol);
+
+            recalcPrices();
+        }
+
+        // CYCLE TOGGLE
+        function setCycle(index, btn) {
+            currentCycleIndex = index;
+
+            // Update Buttons UI
+            document.querySelectorAll('[data-btn-type="cycle"]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            recalcPrices();
+        }
+
+        // RECALCULATE FUNCTION
+        function recalcPrices() {
+            // Discounts: 0% (Monthly), 40% (1yr), 70% (3yr)
+            const discounts = [0, 0.40, 0.70];
+            const discount = discounts[currentCycleIndex];
+            const periods = ["/mo", "/mo billed annually", "/mo billed triennially"];
+
+            document.querySelectorAll('.amount').forEach(el => {
+                // Get base price depending on current currency
+                const basePrice = currentCurrency === 'USD' 
+                    ? parseFloat(el.getAttribute('data-usd')) 
+                    : parseFloat(el.getAttribute('data-inr'));
+
+                const finalPrice = basePrice - (basePrice * discount);
+                
+                // Format: 2 decimals
+                el.textContent = finalPrice.toFixed(2);
+            });
+
+            // Update Period Text
+            document.querySelectorAll('.period').forEach(el => {
+                el.textContent = periods[currentCycleIndex];
+            });
+        }
+
+        // Mobile Menu
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        const overlay = document.getElementById('overlay');
+        const toggleIcon = mobileToggle.querySelector('i');
+
+        function toggleMenu() {
+            const isActive = navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+            if (isActive) {
+                toggleIcon.classList.remove('fa-bars');
+                toggleIcon.classList.add('fa-xmark');
+                document.body.style.overflow = 'hidden';
+            } else {
+                toggleIcon.classList.remove('fa-xmark');
+                toggleIcon.classList.add('fa-bars');
+                document.body.style.overflow = '';
+            }
+        }
+        function closeMenu() {
+            navLinks.classList.remove('active');
+            overlay.classList.remove('active');
+            toggleIcon.classList.remove('fa-xmark');
+            toggleIcon.classList.add('fa-bars');
+            document.body.style.overflow = '';
+        }
+        mobileToggle.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', closeMenu);
+
+        // Scroll Reveal
+        if ('IntersectionObserver' in window) {
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+        } else {
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+        }
+    </script>
+</body>
+</html>

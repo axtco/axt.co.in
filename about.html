@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>About Us | AXTCloud</title>
+    <meta name="description" content="Learn about AXTCloud's mission, our global infrastructure, and the leadership driving our success.">
+    <meta name="theme-color" content="#050505">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="icon" type="image/jpg" href="https://cdn.axt.co.in/logo.jpg">
+
+    <style>
+        :root {
+            --primary-red: #ff0000;
+            --dark-bg: #050505;
+            --card-bg: #111111;
+            --card-hover: #161616;
+            --text-white: #ffffff;
+            --text-muted: #aaaaaa;
+            --border-color: #222;
+            --gradient: linear-gradient(135deg, #ff0000 0%, #8b0000 100%);
+            --header-height: 80px;
+        }
+
+        /* RESET & BASE */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        html { scroll-behavior: smooth; scroll-padding-top: var(--header-height); }
+
+        body {
+            font-family: 'Poppins', sans-serif; /* Previous Font Applied */
+            background-color: var(--dark-bg);
+            color: var(--text-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* UTILITIES */
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* ANIMATIONS */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+        }
+
+        /* HEADER */
+        header {
+            position: fixed; top: 0; width: 100%; height: var(--header-height);
+            padding: 0 5%; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .brand { font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 10px; z-index: 1002; }
+        .brand span { color: var(--primary-red); }
+        .brand img { height: 40px; border-radius: 6px; }
+
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { font-size: 0.95rem; color: #ccc; font-weight: 500; position: relative; }
+        .nav-links a:hover { color: var(--text-white); }
+        
+        .cta-btn {
+            background: var(--primary-red); padding: 10px 24px; border-radius: 8px;
+            font-weight: 600; color: white !important; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+        }
+        .cta-btn:hover { background: #cc0000; transform: translateY(-2px); }
+
+        .mobile-toggle { display: none; font-size: 1.5rem; color: #fff; cursor: pointer; z-index: 1002; }
+
+        /* ABOUT HERO */
+        .page-hero {
+            padding: 140px 20px 80px;
+            text-align: center;
+            background: radial-gradient(circle at top, #1a0000 0%, var(--dark-bg) 60%);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .page-hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700; margin-bottom: 15px; }
+        .page-hero h1 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .page-hero p { color: var(--text-muted); max-width: 700px; margin: 0 auto; font-size: 1.1rem; }
+
+        /* STATS BANNER */
+        .stats-banner {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: -40px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        .stat-card {
+            background: #111;
+            border: 1px solid #222;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .stat-num { font-size: 2rem; font-weight: 700; color: var(--primary-red); display: block; }
+        .stat-desc { font-size: 0.9rem; color: #888; font-weight: 500; }
+
+        /* SECTIONS */
+        section { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 2rem; margin-bottom: 40px; text-align: center; }
+        .section-title span { color: var(--primary-red); }
+
+        /* MISSION */
+        .mission-box {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+        .mission-text { font-size: 1.3rem; font-weight: 500; color: #ddd; line-height: 1.6; margin-bottom: 20px; }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .value-item {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            border-left: 4px solid var(--primary-red);
+        }
+        .value-item h3 { margin-bottom: 10px; font-size: 1.2rem; }
+        .value-item p { color: #999; font-size: 0.95rem; }
+
+        /* LEADERSHIP */
+        .leader-section { background: linear-gradient(to right, #0a0a0a, #0f0f0f); border-radius: 20px; margin: 80px auto; padding: 60px 40px; text-align: center; border: 1px solid #222; }
+        .leader-avatar {
+            width: 100px; height: 100px; background: #222; border-radius: 50%; margin: 0 auto 20px;
+            display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: var(--primary-red); border: 2px solid var(--primary-red);
+        }
+        .leader-name { font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 5px; }
+        .leader-role { color: var(--primary-red); font-weight: 600; margin-bottom: 15px; letter-spacing: 1px; }
+        .leader-company { color: #777; font-size: 0.9rem; text-transform: uppercase; }
+
+        /* NETWORK GRID */
+        .network-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .loc-card {
+            background: #111;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #222;
+            transition: 0.3s;
+        }
+        .loc-card:hover { border-color: var(--primary-red); transform: translateY(-5px); }
+        .loc-card.primary { border-color: #ff3333; background: rgba(255,0,0,0.05); }
+        .loc-icon { font-size: 1.5rem; color: var(--primary-red); margin-bottom: 10px; }
+        .loc-name { font-weight: 600; color: #fff; margin-bottom: 5px; }
+        .loc-type { font-size: 0.8rem; color: #666; text-transform: uppercase; }
+
+        /* HQ INFO */
+        .hq-section { text-align: center; margin-top: 60px; padding-top: 60px; border-top: 1px solid #222; }
+        .hq-address { color: #aaa; margin-top: 20px; font-style: normal; line-height: 1.8; }
+        .hq-address strong { color: #fff; font-size: 1.1rem; }
+        
+        /* Location Group for separation */
+        .location-group {
+            margin-bottom: 60px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .location-group:last-of-type {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        /* ADDED MAP STYLES */
+        .map-container {
+            margin-top: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #333;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            height: 350px; /* Set a default height */
+        }
+        /* Ensure the inner elements of the map container are full size and responsive */
+        .map-container iframe, 
+        .map-container .gmap_canvas, 
+        .map-container .gmap_iframe,
+        .map-container > div { 
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+        
+        /* Specific overrides for user's map structure (if needed, but leveraging .map-container > div should suffice) */
+        .mapouter, .gmap_canvas { 
+            width: 100%; 
+            height: 100%;
+        }
+
+        /* CONTACT GRID */
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px 20px; /* Adjusted gap for 4 items */
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px dashed #222;
+        }
+        .contact-item { min-width: 250px; }
+        .contact-item span { display: block; font-size: 0.85rem; color: #666; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+        .contact-item a { font-size: 1.1rem; font-weight: 600; }
+        .contact-item a:hover { text-decoration: underline; }
+
+        /* FOOTER */
+        footer { background: #080808; border-top: 1px solid #222; padding: 60px 20px; text-align: center; color: #666; }
+        .footer-links { margin: 25px 0; font-size: 0.9rem; }
+        .footer-links a { color: #999; padding: 0 10px; }
+        .footer-links a:hover { color: var(--primary-red); }
+
+        /* MOBILE */
+        @media (max-width: 992px) {
+            .mobile-toggle { display: block; }
+            .nav-links {
+                position: fixed; top: 0; right: -100%; height: 100vh; width: 75%; max-width: 300px;
+                background: #111; flex-direction: column; justify-content: center; gap: 40px;
+                transition: 0.4s ease; z-index: 1001; box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+            }
+            .nav-links.active { right: 0; }
+            .overlay {
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.7); z-index: 1000; display: none; opacity: 1;
+            }
+            .overlay.active { display: block; opacity: 1; }
+            /* Adjust map height for smaller screens */
+            .map-container { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay" id="overlay"></div>
+
+    <header>
+        <a href="index.html" class="brand">
+            <img src="https://cdn.axt.co.in/logo.jpg" alt="AXT Logo">
+            <div>AXT<span>Cloud</span></div>
+        </a>
+
+        <div class="mobile-toggle" id="mobileToggle"><i class="fa-solid fa-bars"></i></div>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="index.html" onclick="closeMenu()">Home</a>
+            <a href="index.html#services" onclick="closeMenu()">Services</a>
+            <a href="index.html#ddos" onclick="closeMenu()">Security</a>
+            <a href="about.html" style="color:var(--primary-red);">About Us</a>
+            <a href="mailto:sales@axt.co.in" class="cta-btn">Contact Sales</a>
+        </nav>
+    </header>
+
+    <div class="page-hero reveal">
+        <h1>Our <span>Story</span></h1>
+        <p>Building the future of cloud infrastructure with precision, power, and reliability.</p>
+    </div>
+
+    <div class="stats-banner reveal">
+        <div class="stat-card">
+            <span class="stat-num">150+</span>
+            <span class="stat-desc">Active Customers</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-num">6</span>
+            <span class="stat-desc">Global Locations</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-num">99.99%</span>
+            <span class="stat-desc">Uptime SLA</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-num">24/7</span>
+            <span class="stat-desc">Expert Support</span>
+        </div>
+    </div>
+
+    <section>
+        <div class="mission-box reveal">
+            <h2 class="section-title">Our <span>Mission</span></h2>
+            <p class="mission-text">"To provide enterprise-grade cloud infrastructure that empowers businesses to innovate and scale without limitations."</p>
+        </div>
+
+        <div class="values-grid reveal">
+            <div class="value-item">
+                <h3>Unmatched Performance</h3>
+                <p>State-of-the-art hardware and optimized infrastructure for maximum speed and reliability.</p>
+            </div>
+            <div class="value-item">
+                <h3>Enterprise Security</h3>
+                <p>Multi-layered security approach with advanced DDoS protection and automated daily backups.</p>
+            </div>
+            <div class="value-item">
+                <h3>Latest Gen Hardware</h3>
+                <p>Powered by AMD RYZEN™ 9 and AMD EPYC™ 9004 Series processors with DDR5 memory.</p>
+            </div>
+            <div class="value-item">
+                <h3>24/7 Expert Support</h3>
+                <p>Dedicated team of cloud experts available round the clock to assist you with any technical needs.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="reveal">
+        <div class="leader-section">
+            <div class="leader-avatar"><i class="fa-solid fa-user-tie"></i></div>
+            <h2 style="font-size:1.2rem; color:#888; margin-bottom:15px;">Meet the person behind AXTCloud success</h2>
+            <div class="leader-name">Irfana C</div>
+            <div class="leader-role">Founder & Leadership</div>
+            <div class="leader-company">AXT TECHNOLOGYS PRIVATE LIMITED</div>
+        </div>
+    </section>
+
+    <section class="reveal">
+        <h2 class="section-title">Our Global <span>Network</span></h2>
+        <p style="text-align: center; color: #aaa; margin-bottom: 30px;">Strategically positioned infrastructure across multiple continents.</p>
+        
+        <div class="network-grid">
+            <div class="loc-card primary">
+                <div class="loc-icon"><i class="fa-solid fa-server"></i></div>
+                <div class="loc-name">India</div>
+                <div class="loc-type">Primary Data Center</div>
+            </div>
+            <div class="loc-card">
+                <div class="loc-icon"><i class="fa-solid fa-network-wired"></i></div>
+                <div class="loc-name">Singapore</div>
+                <div class="loc-type">Secondary Location</div>
+            </div>
+            <div class="loc-card">
+                <div class="loc-icon"><i class="fa-solid fa-network-wired"></i></div>
+                <div class="loc-name">Germany</div>
+                <div class="loc-type">Secondary Location</div>
+            </div>
+            <div class="loc-card">
+                <div class="loc-icon"><i class="fa-solid fa-network-wired"></i></div>
+                <div class="loc-name">Luxembourg</div>
+                <div class="loc-type">Secondary Location</div>
+            </div>
+            <div class="loc-card">
+                <div class="loc-icon"><i class="fa-solid fa-network-wired"></i></div>
+                <div class="loc-name">United States</div>
+                <div class="loc-type">Secondary Location</div>
+            </div>
+            <div class="loc-card">
+                <div class="loc-icon"><i class="fa-solid fa-network-wired"></i></div>
+                <div class="loc-name">United Kingdom</div>
+                <div class="loc-type">Secondary Location</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hq-section reveal">
+        <h2 class="section-title">Corporate <span>Locations</span></h2>
+        
+        <div class="location-group reveal">
+            <address class="hq-address">
+                <strong style="color:var(--primary-red);">Headquarters (Bengaluru)</strong><br>
+                <strong>AXT TECHNOLOGYS PVT LTD</strong><br>
+                Unit 14B, World Trade Center, BRIGADE GATEWAY, Dr Rajkumar Rd, Campus<br>
+                Malleshwaram, Bengaluru, Karnataka 560055
+            </address>
+
+            <div class="map-container">
+                <iframe
+                    width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.892694770289!2d77.56708787595604!3d12.983995814041123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae163c46e29789%3A0xf6938a9f390074d!2sBrigade%20Gateway!5e0!3m2!1sen!2sin!4v1701389734135!5m2!1sen!2sin"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+
+        <div class="location-group reveal">
+            <address class="hq-address">
+                <strong style="color:var(--primary-red);">Branch Office (Chennai)</strong><br>
+                <strong>AXT TECHNOLOGYS PVT LTD</strong><br>
+                Futura Tech Park, Tower B 5th Floor, Suite #502<br>
+                127, Rajiv Gandhi Salai (OMR) Chennai, Tamilnadu 600119
+            </address>
+
+            <div class="map-container">
+                <div class="mapouter">
+                    <div class="gmap_canvas">
+                        <iframe class="gmap_iframe" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&height=400&hl=en&q=Futura Tech Park Chennai &t=&z=14&ie=UTF8&iwloc=B&output=embed"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="location-group reveal">
+            <address class="hq-address">
+                <strong style="color:var(--primary-red);">Cloud Core Facility (Kannur)</strong><br>
+                <strong>AXT TECHNOLOGYS PVT LTD - AxtCloud Data Center (KNR)</strong><br>
+                Unit 3, Kannur Industrial Park, Kannur Cloud Core Facility (KCF, Mattanur - Irikkur Rd, near Kannur International Airport CNN, Valiyavelicham, Kannur, Kerala 670702
+            </address>
+
+            <div class="map-container">
+                <div style="width: 100%"><iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=Unit%203,%20AXT%20TECHNOLOGYS%20PVT%20LTD%20-%20AxtCloud%20Data%20Center%20(KNR),%20Kannur%20Industrial%20Park,%20Kannur%20Cloud%20Core%20Facility%20(KCF,%20Mattanur%20-%20Irikkur%20Rd,%20near%20Kannur%20International%20Airport%20CNN,%20Valiyavelicham,%20Kannur,%20Kerala%20670702+(Unit%203,%20AXT%20TECHNOLOGYS%20PVT%20LTD%20-%20AxtCloud%20Data%20Center%20(KNR))&t=&z=14&ie=UTF8&iwloc=B&output=embed"><a href="https://www.mapsdirections.info/de/evolkerung-auf-einer-karte-berechnen/">Bevölkerungskarte Deutschland</a></iframe></div>
+            </div>
+        </div>
+        
+        <div class="contact-grid">
+            <div class="contact-item">
+                <span>Sales Inquiries</span>
+                <a href="mailto:sales@axt.co.in" style="color:#fff;">sales@axt.co.in</a>
+            </div>
+            <div class="contact-item">
+                <span>Technical Support</span>
+                <a href="mailto:help@axt.co.in" style="color:var(--primary-red);">help@axt.co.in</a>
+            </div>
+            <div class="contact-item">
+                <span>Bengaluru Office</span>
+                <a href="mailto:blr@axt.co.in" style="color:#fff;">blr@axt.co.in</a>
+            </div>
+            <div class="contact-item">
+                <span>Chennai Office</span>
+                <a href="mailto:maa@axt.co.in" style="color:#fff;">maa@axt.co.in</a>
+            </div>
+            <div class="contact-item">
+                <span>Kannur Data Center</span>
+                <a href="mailto:can@axt.co.in" style="color:#fff;">can@axt.co.in</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="brand" style="justify-content: center; margin-bottom: 20px; filter: grayscale(100%); opacity: 0.5;">
+            <img src="https://cdn.axt.co.in/logo.jpg" alt="AXT Logo" width="40" height="40">
+            <div>AXT<span>Cloud</span></div>
+        </div>
+        <p>© <span id="year"></span> AXT TECHNOLOGYS PVT LTD. All Rights Reserved.</p>
+        <div class="footer-links">
+            <a href="about.html" style="color:var(--primary-red);">About Us</a> | 
+            <a href="privacy.html">Privacy Policy</a> | 
+            <a href="terms.html">Terms of Service</a>
+        </div>
+        <p style="font-size: 0.85rem; color: #444;">Unit 14B, World Trade Center, Bengaluru – 560055</p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        const overlay = document.getElementById('overlay');
+        const toggleIcon = mobileToggle.querySelector('i');
+
+        function toggleMenu() {
+            const isActive = navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+            if (isActive) {
+                toggleIcon.classList.remove('fa-bars');
+                toggleIcon.classList.add('fa-xmark');
+                document.body.style.overflow = 'hidden';
+            } else {
+                toggleIcon.classList.remove('fa-xmark');
+                toggleIcon.classList.add('fa-bars');
+                document.body.style.overflow = '';
+            }
+        }
+        function closeMenu() {
+            navLinks.classList.remove('active');
+            overlay.classList.remove('active');
+            toggleIcon.classList.remove('fa-xmark');
+            toggleIcon.classList.add('fa-bars');
+            document.body.style.overflow = '';
+        }
+        mobileToggle.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', closeMenu);
+
+        // Reveal Animation
+        if ('IntersectionObserver' in window) {
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+        } else {
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+        }
+    </script>
+</body>
+</html>

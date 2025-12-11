@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Contact Us | AXTCloud</title>
+    <meta name="description" content="Get in touch with AXTCloud. Technical support, sales inquiries, and office location details.">
+    <meta name="theme-color" content="#050505">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="icon" type="image/jpg" href="https://cdn.axt.co.in/logo.jpg">
+
+    <style>
+        :root {
+            --primary-red: #ff0000;
+            --dark-bg: #050505;
+            --card-bg: #111111;
+            --card-hover: #161616;
+            --text-white: #ffffff;
+            --text-muted: #aaaaaa;
+            --border-color: #222;
+            --gradient: linear-gradient(135deg, #ff0000 0%, #8b0000 100%);
+            --header-height: 80px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; scroll-padding-top: var(--header-height); }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* UTILITIES */
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        .highlight { color: var(--primary-red); }
+
+        /* ANIMATIONS */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* HEADER */
+        header {
+            position: fixed; top: 0; width: 100%; height: var(--header-height);
+            padding: 0 5%; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .brand { font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 10px; z-index: 1002; }
+        .brand span { color: var(--primary-red); }
+        .brand img { height: 40px; border-radius: 6px; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { font-size: 0.95rem; color: #ccc; font-weight: 500; }
+        .nav-links a:hover { color: var(--text-white); }
+        .cta-btn {
+            background: var(--primary-red); padding: 10px 24px; border-radius: 8px;
+            font-weight: 600; color: white !important; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+        }
+        .cta-btn:hover { background: #cc0000; transform: translateY(-2px); }
+        .mobile-toggle { display: none; font-size: 1.5rem; color: #fff; cursor: pointer; z-index: 1002; }
+
+        /* HERO */
+        .hero {
+            padding: 140px 20px 80px;
+            text-align: center;
+            background: radial-gradient(circle at top, #1a0000 0%, var(--dark-bg) 70%);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700; margin-bottom: 15px; line-height: 1.1; }
+        .hero h1 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+
+        /* CONTACT GRID */
+        .contact-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 40px 30px;
+            border-radius: 16px;
+            text-align: center;
+            transition: 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-card:hover {
+            border-color: var(--primary-red);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .icon-box {
+            width: 70px; height: 70px;
+            background: rgba(255,0,0,0.1);
+            color: var(--primary-red);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+        }
+
+        .contact-card h3 { font-size: 1.3rem; margin-bottom: 15px; color: #fff; }
+        
+        .contact-info { color: #ccc; font-size: 1rem; line-height: 1.8; }
+        .contact-info a { color: #fff; font-weight: 600; border-bottom: 1px dotted #666; }
+        .contact-info a:hover { color: var(--primary-red); border-color: var(--primary-red); }
+
+        .hours-list { width: 100%; margin-top: 10px; text-align: left; padding-left: 20px; }
+        .hours-list div { display: flex; justify-content: space-between; border-bottom: 1px solid #222; padding: 8px 0; font-size: 0.9rem; color: #aaa; }
+        .hours-list div:last-child { border-bottom: none; }
+        .hours-list span { color: #fff; font-weight: 500; }
+
+        /* FOOTER */
+        footer { background: #080808; border-top: 1px solid #222; padding: 60px 20px; text-align: center; color: #666; }
+        .footer-links { margin: 25px 0; font-size: 0.9rem; }
+        .footer-links a { color: #999; padding: 0 10px; }
+        .footer-links a:hover { color: var(--primary-red); }
+
+        /* MOBILE */
+        @media (max-width: 992px) {
+            .mobile-toggle { display: block; }
+            .nav-links {
+                position: fixed; top: 0; right: -100%; height: 100vh; width: 75%; max-width: 300px;
+                background: #111; flex-direction: column; justify-content: center; gap: 40px;
+                transition: 0.4s ease; z-index: 1001; box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+            }
+            .nav-links.active { right: 0; }
+            .overlay {
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.7); z-index: 1000; display: none; opacity: 0; transition: 0.3s;
+            }
+            .overlay.active { display: block; opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay" id="overlay"></div>
+
+    <header>
+        <a href="index.html" class="brand">
+            <img src="https://cdn.axt.co.in/logo.jpg" alt="AXT Logo">
+            <div>AXT<span>Cloud</span></div>
+        </a>
+        <div class="mobile-toggle" id="mobileToggle"><i class="fa-solid fa-bars"></i></div>
+        <nav class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="vps-hosting.html">VPS</a>
+            <a href="cloud-hosting.html">Cloud</a>
+            <a href="dedicated-servers.html">Dedicated</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html" style="color:var(--primary-red);">Contact</a>
+        </nav>
+    </header>
+
+    <div class="hero reveal">
+        <h1>Get in <span class="highlight">Touch</span></h1>
+        <h1>Let's Start a <span class="highlight">Conversation</span></h1>
+        <br>
+        <p>Have questions about our services? Need technical support? Our team is here to help you 24/7.</p>
+    </div>
+
+    <div class="contact-section reveal">
+        
+        <div class="contact-card">
+            <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
+            <h3>Email Us</h3>
+            <div class="contact-info">
+                <p>For general inquiries and support:</p>
+                <br>
+                <a href="mailto:help@mail.axt.co.in" style="font-size: 1.2rem;">help@mail.axt.co.in</a>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
+            <h3>Visit Us</h3>
+            <div class="contact-info">
+                <strong>AXT TECHNOLOGYS</strong><br>
+                Unit 14B, World Trade Center<br>
+                Brigade Gateway Campus<br>
+                Dr. Rajkumar Road, Malleshwaram<br>
+                Bengaluru, Karnataka – 560055
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <div class="icon-box"><i class="fa-solid fa-clock"></i></div>
+            <h3>Business Hours</h3>
+            <div class="hours-list">
+                <div>Monday - Friday <span>9:00 AM - 6:00 PM IST</span></div>
+                <div>Saturday <span>10:00 AM - 4:00 PM IST</span></div>
+                <div>Sunday <span style="color:var(--primary-red);">Closed</span></div>
+                <br>
+                <div style="border:none; justify-content:center; color:var(--primary-red); font-size:0.8rem;">
+                    <i class="fa-solid fa-circle-check" style="margin-right:5px;"></i> Technical Support is 24/7
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="brand" style="justify-content: center; margin-bottom: 20px; filter: grayscale(100%); opacity: 0.5;">
+            <img src="https://cdn.axt.co.in/logo.jpg" alt="AXT Logo" width="40" height="40">
+            <div>AXT<span>Cloud</span></div>
+        </div>
+        <p>© <span id="year"></span> AXT TECHNOLOGYS PVT LTD. All Rights Reserved.</p>
+        <div class="footer-links">
+            <a href="about.html">About Us</a> | 
+            <a href="privacy.html">Privacy Policy</a> | 
+            <a href="terms.html">Terms of Service</a>
+        </div>
+        <p style="font-size: 0.85rem; color: #444;">Unit 14B, World Trade Center, Bengaluru – 560055</p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        const overlay = document.getElementById('overlay');
+        const toggleIcon = mobileToggle.querySelector('i');
+
+        function toggleMenu() {
+            const isActive = navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+            if (isActive) {
+                toggleIcon.classList.remove('fa-bars');
+                toggleIcon.classList.add('fa-xmark');
+                document.body.style.overflow = 'hidden';
+            } else {
+                toggleIcon.classList.remove('fa-xmark');
+                toggleIcon.classList.add('fa-bars');
+                document.body.style.overflow = '';
+            }
+        }
+        function closeMenu() {
+            navLinks.classList.remove('active');
+            overlay.classList.remove('active');
+            toggleIcon.classList.remove('fa-xmark');
+            toggleIcon.classList.add('fa-bars');
+            document.body.style.overflow = '';
+        }
+        mobileToggle.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', closeMenu);
+
+        // Scroll Reveal
+        if ('IntersectionObserver' in window) {
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+        } else {
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+        }
+    </script>
+</body>
+</html>

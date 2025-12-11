@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AXT TECHNOLOGYS PVT LTD - Founded in 2024. Your All-In-One Cloud Partner (AXTCloud). Offering Enterprise Hosting, AI Education, and IT Careers in India.">
+    <meta name="keywords" content="AXTCloud, AXT Technologies, Cloud Hosting India, FiveM Server Provider, AI Crash Course, Irfana C Director, IT Company Bengaluru, Student Assets, IT Jobs Bengaluru, Careers at AXT, Managed VPS, Dedicated Server India, AXT Technologies Chennai, AXT Technologies Kochi">
+    <meta name="author" content="AXT TECHNOLOGYS PVT LTD">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="business.business">
+    <meta property="og:title" content="AXT Technologies | The All-In-One Cloud Partner">
+    <meta property="og:description" content="Founded in 2024, growing from gaming roots to enterprise cloud solutions. Serving 150+ happy customers. We are Hiring!">
+    <meta property="og:url" content="https://axt.co.in/axt.html">
+    <meta property="og:image" content="https://cdn.axt.co.in/logo.jpg">
+    
+    <title>AXT Technologies | AXTCloud - Cloud Partner & Careers</title>
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- TrustBox script -->
+    <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ITCorporation",
+      "name": "AXT TECHNOLOGYS PVT LTD",
+      "alternateName": "AXTCloud",
+      "foundingDate": "2024",
+      "slogan": "Your All-In-One Cloud Partner",
+      "url": "https://axt.co.in",
+      "logo": "https://cdn.axt.co.in/logo.jpg",
+      "numberOfEmployees": {
+        "@type": "QuantitativeValue",
+        "value": 30,
+        "unitText": "Employees"
+      },
+      "description": "Founded in 2024 as a FiveM provider, AXT Technologies is now a comprehensive IT company providing premium cloud infrastructure through AXTCloud.",
+      "employee": {
+        "@type": "Person",
+        "name": "Irfana C.",
+        "jobTitle": "Director"
+      },
+      "subOrganization": {
+        "@type": "Organization",
+        "name": "AXTCloud",
+        "description": "Your All-In-One Cloud Partner for VPS, Dedicated Servers, and Game Hosting."
+      },
+      "hasCourse": {
+        "@type": "Course",
+        "name": "90 Day's AI & ML Crash Course",
+        "description": "Intensive Artificial Intelligence and Machine Learning training program conducted twice a year.",
+        "provider": {
+          "@type": "Organization",
+          "name": "AXT TECHNOLOGYS PVT LTD"
+        }
+      },
+      "location": [
+        {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Unit 14B, World Trade Center, Brigade Gateway Campus, Dr. Rajkumar Road, Malleshwaram",
+            "addressLocality": "Bengaluru",
+            "addressRegion": "Karnataka",
+            "postalCode": "560055",
+            "addressCountry": "IN"
+          }
+        },
+        {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Level 8, Olympia Tech Park – Citius Block, Guindy Industrial Estate",
+            "addressLocality": "Chennai",
+            "addressRegion": "Tamil Nadu",
+            "postalCode": "600032",
+            "addressCountry": "IN"
+          }
+        },
+        {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "6th Floor, Lulu Cyber Tower 2, Infopark Phase 1, Kakkanad",
+            "addressLocality": "Kochi",
+            "addressRegion": "Kerala",
+            "postalCode": "682030",
+            "addressCountry": "IN"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --brand-red: #ff0000;
+            --brand-dark: #0a0a0a;
+            --brand-gray: #1a1a1a;
+            --text-light: #f5f5f5;
+            --text-dim: #a0a0a0;
+            --gold: #ffd700;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--brand-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(10, 10, 10, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #222;
+            backdrop-filter: blur(10px);
+        }
+        
+        .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }
+        .logo span { color: var(--brand-red); }
+        .logo img { height: 35px; border-radius: 4px; }
+        
+        .nav-items { display: flex; align-items: center; }
+        .nav-items a { margin-left: 30px; font-weight: 500; color: var(--text-dim); font-size: 0.95rem; }
+        .nav-items a:hover, .nav-items a.active { color: var(--brand-red); }
+
+        /* Hero Section */
+        header.hero {
+            padding: 180px 5% 80px;
+            text-align: center;
+            background: radial-gradient(circle at top, #1a0505 0%, var(--brand-dark) 60%);
+            position: relative;
+        }
+        
+        .company-tag {
+            background: rgba(255, 0, 0, 0.1);
+            color: var(--brand-red);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.lead {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            max-width: 750px;
+            margin: 0 auto 40px;
+        }
+
+        /* Section Styling */
+        section { padding: 80px 5%; max-width: 1300px; margin: 0 auto; }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-title h2 { font-size: 2.5rem; margin-bottom: 10px; line-height: 1.2; }
+        .section-title h2 span { color: var(--brand-red); }
+        .section-title p { color: var(--text-dim); }
+
+        /* Story & Stats Section */
+        .story-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            background: #0f0f0f;
+            padding: 50px;
+            border-radius: 20px;
+            border: 1px solid #222;
+            margin-bottom: 80px;
+        }
+        .story-content h3 { font-size: 2rem; margin-bottom: 15px; }
+        .story-content p { color: #aaa; margin-bottom: 20px; }
+        .story-highlight { color: #fff; font-weight: 600; }
+
+        .stats-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .stat-box {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+        .stat-number { font-size: 2.5rem; font-weight: 800; color: var(--brand-red); display: block; }
+        .stat-label { font-size: 0.9rem; color: #888; }
+        .hiring-btn {
+            display: inline-block;
+            margin-top: 15px;
+            background: var(--brand-red);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .hiring-btn:hover { background: #cc0000; transform: translateY(-2px); }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: var(--brand-gray);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid #333;
+            transition: 0.3s;
+            position: relative;
+        }
+        .service-card:hover {
+            border-color: var(--brand-red);
+            transform: translateY(-5px);
+        }
+        .service-card i { font-size: 2rem; color: var(--brand-red); margin-bottom: 20px; }
+        .service-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .service-card p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.7; }
+
+        /* Education & Student Initiatives */
+        .csr-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 80px 0;
+        }
+        .csr-card {
+            background: linear-gradient(145deg, #111, #0a0a0a);
+            border-radius: 20px;
+            padding: 50px;
+            border: 1px solid #222;
+            position: relative;
+            overflow: hidden;
+        }
+        .csr-card::before {
+            content: ''; position: absolute; top:0; left:0; width: 100%; height: 5px;
+            background: var(--brand-red);
+        }
+        .csr-badge {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: inline-block;
+            letter-spacing: 1px;
+        }
+        .csr-card h3 { font-size: 2rem; margin-bottom: 15px; color: #fff; }
+        .csr-card p { color: var(--text-dim); margin-bottom: 30px; }
+        .feature-list { display: flex; flex-direction: column; gap: 15px; }
+        .feature-item { display: flex; align-items: center; gap: 10px; color: #ccc; font-weight: 500; }
+        .feature-item i { color: var(--brand-red); }
+
+        /* Director Message */
+        .director-section {
+            background: #111;
+            border: 1px solid #333;
+            padding: 60px 40px;
+            border-radius: 20px;
+            margin: 80px auto;
+            position: relative;
+            max-width: 1000px;
+        }
+        .director-section::after {
+            content: '\201D';
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-size: 8rem;
+            color: rgba(255, 255, 255, 0.05);
+            font-family: serif;
+            line-height: 0;
+        }
+        .director-content h3 { color: var(--brand-red); font-size: 1.5rem; margin-bottom: 20px; }
+        .director-content p { color: #ccc; margin-bottom: 20px; font-style: italic; font-size: 1.05rem; }
+        .director-sign { margin-top: 30px; border-top: 1px solid #333; padding-top: 20px; display: inline-block; }
+        .director-sign strong { color: #fff; display: block; font-size: 1.2rem; }
+        .director-sign span { color: #888; font-size: 0.9rem; }
+
+        /* Addresses */
+        .address-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .office-card {
+            background: #0f0f0f;
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 3px solid var(--brand-red);
+        }
+        .office-card h3 { font-size: 1.2rem; margin-bottom: 15px; color: #fff; display: flex; align-items: center; gap: 10px; }
+        .office-card h3 i { color: var(--brand-red); font-size: 1rem; }
+        .office-card address {
+            font-style: normal;
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid #222;
+            padding: 60px 5%;
+            margin-top: 80px;
+            background: #050505;
+            text-align: center;
+        }
+        .footer-logo { opacity: 0.7; margin-bottom: 20px; }
+        .copyright { color: #555; font-size: 0.9rem; }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .csr-grid, .story-container { grid-template-columns: 1fr; }
+            h1 { font-size: 2.5rem; }
+        }
+        @media (max-width: 600px) {
+            .nav-items { display: none; }
+            header.hero { padding-top: 140px; }
+            .stats-wrapper { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="https://cdn.axt.co.in/logo.jpg" alt="AXT Logo">
+            AXT<span>TECHNOLOGYS</span>
+        </a>
+        <div class="nav-items">
+            <a href="#story">Our Story</a>
+            <a href="#services">Services</a>
+            <a href="#education">Education</a>
+            <a href="#locations">Offices</a>
+            <a href="https://axt.co.in/careers/" class="active">Careers</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <span class="company-tag">IT SOLUTIONS & EDUCATION</span>
+        <h1>Innovating Cloud Infrastructure<br><span>Empowering Students</span></h1>
+        <p class="lead">AXT TECHNOLOGYS PVT LTD is a leading IT company. We power businesses with our premium brand <strong>AXTCloud - Your All-In-One Cloud Partner</strong> - and give back by empowering students with free assets and AI training.</p>
+        
+        <!-- Trustpilot Integration -->
+        <div style="max-width: 300px; margin: 0 auto;">
+            <div class="trustpilot-widget" data-locale="en-US" data-template-id="5419b6a8b0d04a076446a9ad" data-businessunit-id="69206b7a2a6043b23f4dfbb5" data-style-height="24px" data-style-width="100%" data-theme="dark">
+                <a href="https://www.trustpilot.com/review/axt.co.in" target="_blank" rel="noopener">Trustpilot</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Our Story & Stats Section -->
+    <section id="story">
+        <div class="story-container">
+            <div class="story-content">
+                <h3>From Gaming Roots to<br><span style="color:var(--brand-red);">Enterprise Cloud</span></h3>
+                <p>Founded in <span class="story-highlight">2024</span>, AXT Technologies began as a dedicated provider of high-performance FiveM gaming servers. Our obsession with low latency and high uptime quickly earned us trust in the gaming community.</p>
+                <p>Today, we have evolved into <strong>AXTCloud</strong>, a comprehensive All-In-One Cloud Partner providing enterprise Dedicated Servers, VPS, and Managed IT solutions across the globe. We are continuously hiring and expanding our team to better serve our growing client base.</p>
+                
+                <a href="https://axt.co.in/careers/" class="hiring-btn">
+                    <i class="fa-solid fa-briefcase"></i> Join Our Team (Hiring)
+                </a>
+            </div>
+            <div class="stats-wrapper">
+                <div class="stat-box">
+                    <span class="stat-number">2024</span>
+                    <span class="stat-label">Year Founded</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">150+</span>
+                    <span class="stat-label">Happy Customers</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">30+</span>
+                    <span class="stat-label">Staff Members</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Uptime Focus</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="section-title">
+            <h2>AXTCloud: Your All-In-One<br><span style="font-weight:800;">Cloud Partner</span></h2>
+            <p>Comprehensive, enterprise-grade IT infrastructure solutions under one roof.</p>
+        </div>
+
+        <div class="services-grid">
+            <article class="service-card">
+                <i class="fa-solid fa-server"></i>
+                <h3>Dedicated Servers</h3>
+                <p>Bare metal power with AMD EPYC™ processors and NVMe storage. Full root access and unshared resources for maximum performance.</p>
+            </article>
+
+            <article class="service-card">
+                <i class="fa-solid fa-cloud"></i>
+                <h3>Cloud VPS</h3>
+                <p>Scalable virtual private servers available in Windows & Ubuntu. Instant deployment with DDoS protection included standard.</p>
+            </article>
+
+            <article class="service-card">
+                <i class="fa-solid fa-gamepad"></i>
+                <h3>Game Hosting</h3>
+                <p>Premium low-latency hosting for Minecraft, FiveM, and more. Optimized networks in Mumbai ensuring lag-free gameplay.</p>
+            </article>
+
+            <article class="service-card">
+                <i class="fa-solid fa-database"></i>
+                <h3>Managed IT Services</h3>
+                <p>From production-ready databases to custom Bot hosting, our expert technical team manages your infrastructure 24/7.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- Education & Student Initiatives -->
+    <section id="education">
+        <div class="section-title">
+            <h2>Education & <span style="font-weight:800;">Student Support</span></h2>
+            <p>Giving back to the community by shaping future tech leaders.</p>
+        </div>
+
+        <div class="csr-grid">
+            <!-- Training Card -->
+            <div class="csr-card">
+                <span class="csr-badge">TRAINING PROGRAM</span>
+                <h3>AI & ML Crash Course</h3>
+                <p>An intensive, industry-focused training program designed to transform beginners into AI practitioners. We aim to educate the next generation of tech talent.</p>
+                <div class="feature-list">
+                    <div class="feature-item"><i class="fa-solid fa-check"></i> 90-Day Intensive Curriculum</div>
+                    <div class="feature-item"><i class="fa-solid fa-check"></i> Conducted Twice a Year</div>
+                    <div class="feature-item"><i class="fa-solid fa-check"></i> Practical, Real-world Projects</div>
+                </div>
+            </div>
+
+            <!-- Free Assets Card -->
+            <div class="csr-card">
+                <span class="csr-badge">STUDENT INITIATIVE</span>
+                <h3>Free Assets for Students</h3>
+                <p>We believe education should be accessible. AXT Technologies provides premium digital assets and new educational resources to students at no cost.</p>
+                <div class="feature-list">
+                    <div class="feature-item"><i class="fa-solid fa-gift"></i> Free Coding Resources</div>
+                    <div class="feature-item"><i class="fa-solid fa-server"></i> Student Cloud Credits</div>
+                    <div class="feature-item"><i class="fa-solid fa-book-open"></i> Learning Material Access</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Director Message -->
+    <section>
+        <div class="director-section">
+            <div class="director-content">
+                <h3>Welcome to AXTCloud!</h3>
+                <p>"At AXTCloud, our mission is simple — to empower businesses, developers, and innovators with reliable, high-performance cloud solutions. Since our inception, we have focused on delivering infrastructure that combines speed, security, and scalability, enabling our clients to focus on what matters most: growth and innovation."</p>
+                <p>"We believe in building more than just cloud services — we build partnerships. Every server we deploy, every solution we design, is driven by a commitment to excellence and customer satisfaction. Your trust motivates us to continuously improve, adopt cutting-edge technologies, and deliver the best possible cloud experience."</p>
+                <p>"Whether you are a startup, a growing business, or an enterprise, AXTCloud is here to support your journey. Together, let’s innovate, scale, and achieve new milestones in the digital world. Thank you for choosing AXTCloud."</p>
+                
+                <div class="director-sign">
+                    <strong>Irfana C.</strong>
+                    <span>Director, AXTCloud</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section id="locations">
+        <div class="section-title">
+            <h2>Corporate <span style="font-weight:800;">Offices</span></h2>
+            <p>Visit AXT TECHNOLOGYS PVT LTD at our registered offices across South India.</p>
+        </div>
+
+        <div class="address-grid">
+            <!-- Bengaluru -->
+            <div class="office-card" itemscope itemtype="https://schema.org/LocalBusiness">
+                <h3 itemprop="name"><i class="fa-solid fa-location-dot"></i> Bengaluru (HQ)</h3>
+                <address itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                    <span itemprop="streetAddress">Unit 14B, World Trade Center<br>Brigade Gateway Campus<br>Dr. Rajkumar Road, Malleshwaram</span><br>
+                    <span itemprop="addressLocality">Bengaluru</span>, <span itemprop="addressRegion">Karnataka</span> – <span itemprop="postalCode">560055</span>
+                </address>
+            </div>
+
+            <!-- Chennai -->
+            <div class="office-card" itemscope itemtype="https://schema.org/LocalBusiness">
+                <h3 itemprop="name"><i class="fa-solid fa-building"></i> Chennai</h3>
+                <address itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                    <span itemprop="streetAddress">Level 8, Olympia Tech Park<br>Citius Block, Guindy Industrial Estate</span><br>
+                    <span itemprop="addressLocality">Chennai</span>, <span itemprop="addressRegion">Tamil Nadu</span> – <span itemprop="postalCode">600032</span>
+                </address>
+            </div>
+
+            <!-- Kochi -->
+            <div class="office-card" itemscope itemtype="https://schema.org/LocalBusiness">
+                <h3 itemprop="name"><i class="fa-solid fa-city"></i> Kochi</h3>
+                <address itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                    <span itemprop="streetAddress">6th Floor, Lulu Cyber Tower 2<br>Infopark Phase 1, Kakkanad</span><br>
+                    <span itemprop="addressLocality">Kochi</span>, <span itemprop="addressRegion">Kerala</span> – <span itemprop="postalCode">682030</span>
+                </address>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">
+            <span style="font-size: 1.2rem; font-weight: 700; color: #fff;">AXT TECHNOLOGYS PVT LTD</span>
+        </div>
+        
+        <p class="copyright">&copy; <script>document.write(new Date().getFullYear())</script> AXT Technologies Pvt Ltd. All Rights Reserved.</p>
+        <p style="color: #444; font-size: 0.8rem; margin-top: 10px;">Brand: AXTCloud</p>
+    </footer>
+
+</body>
+</html>
+
+

@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>S3 Compatible Object Storage | AXTCloud</title>
+    <meta name="description" content="Limitless, durable, and affordable S3-compatible object storage for backups, media, and big data. Pay-as-you-go pricing.">
+    <meta name="theme-color" content="#050505">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <link rel="icon" type="image/jpg" href="https://cdn.axt.co.in/logo.jpg">
+
+    <style>
+        :root {
+            --primary-red: #ff0000;
+            --dark-bg: #050505;
+            --card-bg: #111111;
+            --card-hover: #161616;
+            --text-white: #ffffff;
+            --text-muted: #aaaaaa;
+            --border-color: #222;
+            --gradient: linear-gradient(135deg, #ff0000 0%, #8b0000 100%);
+            --header-height: 80px;
+            
+            --storage-orange: #ff9900; 
+            --storage-gradient: linear-gradient(135deg, #ff9900 0%, #ff6600 100%);
+
+            --shadow-dark: rgba(0, 0, 0, 0.4);
+            --shadow-light: rgba(255, 255, 255, 0.05);
+        }
+
+        /* --- GLOBAL STYLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; scroll-padding-top: var(--header-height); }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* UTILITIES */
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        .highlight { color: var(--primary-red); }
+        .highlight-storage {
+            background: var(--storage-gradient); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+        }
+        .mono { font-family: 'Fira Code', monospace; }
+
+        /* HEADER & NAVIGATION */
+        header {
+            position: fixed; top: 0; width: 100%; height: var(--header-height);
+            padding: 0 5%; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 2px 10px var(--shadow-dark);
+        }
+        .brand { font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 10px; z-index: 1002; }
+        .brand span { color: var(--primary-red); }
+        .brand img { height: 40px; border-radius: 6px; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { font-size: 0.95rem; color: #ccc; font-weight: 500; }
+        .nav-links a:hover { color: var(--text-white); }
+        
+        /* Enhanced CTA Button for Depth */
+        .cta-btn {
+            background: var(--primary-red); padding: 10px 24px; border-radius: 8px;
+            font-weight: 600; color: white !important; 
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.1); 
+            transition: all 0.2s ease;
+        }
+        .cta-btn:hover { 
+            background: #cc0000; 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        .mobile-toggle { display: none; font-size: 1.5rem; color: #fff; cursor: pointer; z-index: 1002; }
+
+
+        /* HERO */
+        .hero {
+            padding: 140px 20px 80px;
+            text-align: center;
+            background: radial-gradient(circle at top, #111 0%, var(--dark-bg) 70%);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .hero h1 { font-size: clamp(2.2rem, 5vw, 4.5rem); font-weight: 700; margin-bottom: 15px; line-height: 1.1; }
+        .hero p { color: var(--text-muted); max-width: 800px; margin: 0 auto 40px; font-size: clamp(1rem, 2vw, 1.2rem); }
+        
+        .ip-display {
+            display: inline-block; background: #111; padding: 15px 30px; border-radius: 12px; 
+            border: 1px solid #333;
+            font-family: 'Fira Code', monospace; margin-bottom: 40px; 
+            color: var(--storage-orange);
+            box-shadow: 0 0 20px rgba(255, 153, 0, 0.1), inset 0 0 5px var(--shadow-dark); 
+        }
+
+        /* --- FEATURE & USE CASE LAYOUTS --- */
+        .grid-section { padding: 80px 20px; max-width: 1300px; margin: 0 auto; }
+        .feature-grid-3 {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
+        }
+        
+        .feature-card {
+            background: var(--card-bg); padding: 35px; border-radius: 12px; 
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px var(--shadow-dark); 
+        }
+        .feature-card:hover {
+            transform: translateY(-5px); 
+            border-color: var(--storage-orange);
+            box-shadow: 0 10px 20px rgba(255, 153, 0, 0.2), 0 0 30px rgba(255, 153, 0, 0.1); 
+        }
+
+        .feature-card h3 { font-size: 1.3rem; margin: 15px 0 10px; display: flex; align-items: center; gap: 10px; }
+        .feature-card i { color: var(--storage-orange); font-size: 1.2rem; } 
+        .feature-card p { color: #999; font-size: 0.95rem; line-height: 1.7; }
+        
+        .usecase-card {
+            background: #111; padding: 30px; border-radius: 12px; 
+            border: 1px solid #333; 
+            transition: 0.3s;
+            box-shadow: 0 4px 8px var(--shadow-dark);
+        }
+        .usecase-card:hover { 
+            border-color: var(--storage-orange); 
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 153, 0, 0.2); 
+        }
+        .usecase-card i { font-size: 3rem; margin-bottom: 15px; color: var(--storage-orange); }
+
+        /* --- PRICING SECTION --- */
+        .pricing-section { padding: 80px 20px; }
+        
+        .currency-toggle {
+            display: flex; 
+            background: #0d0d0d; 
+            padding: 5px; border-radius: 50px; 
+            border: 1px solid #333;
+            box-shadow: inset 0 1px 3px var(--shadow-dark); 
+        }
+        .curr-btn {
+            padding: 10px 30px; border-radius: 40px; cursor: pointer; font-size: 0.9rem; font-weight: 600; color: #888; transition: 0.3s;
+        }
+        .curr-btn.active { 
+            background: var(--storage-orange); 
+            color: #000; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3); 
+        } 
+
+        .pricing-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;
+        }
+        .price-card {
+            background: var(--card-bg); padding: 40px; border-radius: 16px; 
+            border: 1px solid var(--border-color);
+            display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; 
+            position: relative; overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow-dark); 
+        }
+        .price-card:hover { 
+            transform: translateY(-8px); 
+            border-color: #444; 
+            box-shadow: 0 12px 25px rgba(0,0,0,0.7); 
+        }
+        .price-card.featured { 
+            border-color: var(--storage-orange); 
+            box-shadow: 0 0 30px rgba(255, 153, 0, 0.2), 0 10px 20px rgba(0,0,0,0.7); 
+        }
+        
+        .plan-badge {
+            position: absolute; top: 20px; right: 20px; 
+            background: #222; padding: 5px 10px; font-size: 0.7rem; font-weight: 700; border-radius: 4px; text-transform: uppercase;
+            box-shadow: 0 1px 3px var(--shadow-dark);
+        }
+        .featured .plan-badge { 
+            background: var(--storage-orange); 
+            color: #000; 
+            box-shadow: 0 1px 5px rgba(255, 153, 0, 0.5);
+        }
+
+        .plan-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; }
+        .plan-price { font-size: 2.5rem; font-weight: 700; margin: 20px 0; display: flex; align-items: baseline; gap: 5px; }
+        .plan-price span { font-size: 1rem; color: #888; font-weight: 400; }
+        
+        .plan-features { margin: 20px 0 40px; flex-grow: 1; }
+        .plan-features li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 15px; color: #ccc; font-size: 0.95rem; }
+        .plan-features i { color: #00d474; margin-top: 3px; }
+
+        .plan-btn {
+            width: 100%; padding: 15px; background: transparent; 
+            border: 1px solid #444; color: #fff;
+            border-radius: 8px; font-weight: 600; text-align: center; 
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 6px var(--shadow-dark);
+        }
+        .plan-btn:hover { 
+            background: #fff; color: #000; border-color: #fff; 
+            transform: translateY(-1px);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.5);
+        }
+        .featured .plan-btn { 
+            background: var(--storage-orange); border-color: var(--storage-orange); color: #000; 
+            box-shadow: 0 5px 10px rgba(255, 153, 0, 0.5);
+        }
+        .featured .plan-btn:hover { 
+            background: #fff; color: #000;
+            box-shadow: 0 6px 15px rgba(255, 153, 0, 0.7);
+        }
+
+        /* FOOTER */
+        footer { background: #080808; border-top: 1px solid #222; padding: 80px 5%; color: #666; }
+        .footer-container {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1400px; margin: 0 auto;
+        }
+        .footer-col h4 { color: #fff; margin-bottom: 20px; font-size: 1.1rem; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: #999; font-size: 0.9rem; transition: 0.3s; }
+        .footer-col ul li a:hover { color: var(--primary-red); padding-left: 5px; }
+        .copyright-bar { border-top: 1px solid #222; margin-top: 60px; padding-top: 30px; text-align: center; font-size: 0.85rem; }
+
+        /* MOBILE RESPONSIVENESS */
+        @media (max-width: 992px) {
+            .mobile-toggle { display: block; }
+            .nav-links {
+                position: fixed; top: 0; right: -100%; height: 100vh; width: 75%; max-width: 300px;
+                background: #111; flex-direction: column; justify-content: center; gap: 40px;
+                transition: 0.4s ease; z-index: 1001; box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+            }
+            .nav-links.active { right: 0; }
+            .overlay {
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.7); z-index: 1000; display: none; opacity: 0; transition: 0.3s;
+            }
+            .overlay.active { display: block; opacity: 1; }
+        }
+        @media (max-width: 768px) {
+            .usecase-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 600px) {
+            .footer-container { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay" id="overlay"></div>
+
+    <header>
+        <a href="index.html" class="brand" data-aos="fade-right" data-aos-duration="600">
+            <img src="https://cdn.axt.co.in/logo.jpg" alt="AXT Logo">
+            <div>AXT<span>Cloud</span></div>
+        </a>
+        <div class="mobile-toggle" id="mobileToggle"><i class="fa-solid fa-bars"></i></div>
+        <nav class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="vps-hosting.html">VPS</a>
+            <a href="dedicated-ip.html">IP Address</a>
+            <a href="object-storage.html" style="color:var(--storage-orange);">Object Storage</a> 
+            <a href="dedicated-servers.html">Dedicated</a>
+            <a href="mailto:sales@mail.axt.co.in" class="cta-btn">Contact Sales</a>
+        </nav>
+    </header>
+
+    <div class="hero" data-aos="fade-up" data-aos-duration="1000">
+        <h1>Limitless Scale.<br>Effortless <span class="highlight-storage">Object Storage</span></h1>
+        <p>100% S3-compatible, geo-redundant storage built for modern applications, backups, and media delivery. Pay only for what you use.</p>
+        
+        <div class="ip-display" data-aos="zoom-in" data-aos-delay="400">
+            <i class="fa-solid fa-bucket"></i> your-bucket-name <span style="color:#444;">/</span> S3 API
+        </div>
+
+        <div style="display:flex; justify-content:center; gap:20px;">
+            <a href="#pricing" class="cta-btn" data-aos="fade-up" data-aos-delay="600" style="background:var(--storage-orange); box-shadow: 0 5px 15px rgba(255, 153, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.1);">Get Started</a>
+            <a href="#features" data-aos="fade-up" data-aos-delay="700" style="color:#fff; text-decoration:underline; align-self:center;">What is S3?</a>
+        </div>
+    </div>
+
+    <section id="features" class="grid-section">
+        <div class="section-header" data-aos="fade-up" style="text-align: center; margin-bottom: 60px;">
+            <h2 style="font-size: clamp(1.8rem, 4vw, 2.5rem);">The <span class="highlight-storage">Object Storage</span> Advantage</h2>
+            <p style="color:#aaa;">Massive durability, flexibility, and cost-efficiency.</p>
+        </div>
+
+        <div class="feature-grid-3">
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <h3><i class="fa-solid fa-cloud-arrow-up"></i> S3 Compatibility</h3>
+                <p>Seamlessly integrate with all existing S3 tools, SDKs, and applications with a 100% compatible API and familiar workflows.</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <h3><i class="fa-solid fa-infinity"></i> Limitless Scalability</h3>
+                <p>Store petabytes of data without capacity planning. Scale from a few GBs to Exabytes instantly and effortlessly.</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                <h3><i class="fa-solid fa-shield-virus"></i> 11 Nines Durability</h3>
+                <p>Your data is safe. Triple-replicated across multiple availability zones for 99.999999999% durability. </p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <h3><i class="fa-solid fa-route"></i> Zero Egress Fees</h3>
+                <p>Transfer your data in and out of AXTCloud without punitive charges or hidden bandwidth fees (internal transfers).</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <h3><i class="fa-solid fa-lock"></i> Encryption & Security</h3>
+                <p>Data is secured with encryption in transit (SSL) and at rest (AES-256). Full control over Access Control Lists (ACLs).</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                <h3><i class="fa-solid fa-clock-rotate-left"></i> Versioning & Lifecycle</h3>
+                <p>Keep, retrieve, and restore every version of an object. Automatically transition or expire data based on custom policies.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="map-section">
+        <div style="text-align: center;">
+            <h2 style="font-size: 2rem; color: #fff;" data-aos="fade-up">Common <span class="highlight-storage">Use Cases</span></h2>
+            <p style="color: #888;" data-aos="fade-up" data-aos-delay="100">Modern storage for modern problems.</p>
+
+            <div class="loc-grid usecase-grid" style="max-width: 1000px;">
+                <div class="usecase-card" data-aos="zoom-in" data-aos-delay="200"><i class="fa-solid fa-rotate-left"></i><h4 style="color:#fff; margin-top:10px;">Backup & Disaster Recovery</h4></div>
+                <div class="usecase-card" data-aos="zoom-in" data-aos-delay="300"><i class="fa-solid fa-film"></i><h4 style="color:#fff; margin-top:10px;">Web & Media Hosting</h4></div>
+                <div class="usecase-card" data-aos="zoom-in" data-aos-delay="400"><i class="fa-solid fa-chart-simple"></i><h4 style="color:#fff; margin-top:10px;">Data Lake & Analytics</h4></div>
+                <div class="usecase-card" data-aos="zoom-in" data-aos-delay="500"><i class="fa-solid fa-desktop"></i><h4 style="color:#fff; margin-top:10px;">Static Website Hosting</h4></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing-section">
+        <div class="section-header" data-aos="fade-up" style="text-align: center; margin-bottom: 40px;">
+            <h2 style="font-size: clamp(1.8rem, 4vw, 2.5rem);">Transparent <span class="highlight-storage">Pay-As-You-Go</span></h2>
+            <p style="color:#aaa;">No hidden fees. No minimum contracts. Only pay for the resources you consume.</p>
+        </div>
+
+        <div class="controls-wrapper" data-aos="fade-up">
+            <div class="currency-toggle">
+                <div class="curr-btn active" onclick="toggleCurrency('USD', this)">USD ($)</div>
+                <div class="curr-btn" onclick="toggleCurrency('INR', this)">INR (₹)</div>
+            </div>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="price-card featured" data-aos="flip-left" data-aos-delay="100">
+                <div class="plan-badge">Most Common</div>
+                <div class="plan-title">Standard Storage</div>
+                <div class="plan-price">
+                    <span class="curr-symbol">$</span><span class="amount" data-usd="0.02" data-inr="1.60">0.02</span><span>/GB/mo</span>
+                </div>
+                <p style="color:#888; font-size:0.9rem;">High-performance, frequently accessed data.</p>
+                <ul class="plan-features">
+                    <li><i class="fa-solid fa-check"></i> 99.999999999% Durability</li>
+                    <li><i class="fa-solid fa-check"></i> Geo-Redundant Replication</li>
+                    <li><i class="fa-solid fa-check"></i> Instant Access Time</li>
+                    <li><i class="fa-solid fa-check"></i> S3 API Compatible</li>
+                </ul>
+                <a href="#contact" class="plan-btn">Start Storing</a>
+            </div>
+
+            <div class="price-card" data-aos="flip-up" data-aos-delay="300">
+                <div class="plan-badge">API Usage</div>
+                <div class="plan-title">PUT/POST Requests</div>
+                <div class="plan-price">
+                    <span class="curr-symbol">$</span><span class="amount" data-usd="0.005" data-inr="0.40">0.005</span><span>/1k requests</span>
+                </div>
+                <p style="color:#888; font-size:0.9rem;">Operations like uploading or modifying data (Class A).</p>
+                <ul class="plan-features">
+                    <li><i class="fa-solid fa-check"></i> Write Operations</li>
+                    <li><i class="fa-solid fa-check"></i> New Object Creation</li>
+                    <li><i class="fa-solid fa-check"></i> High Scalability</li>
+                    <li><i class="fa-solid fa-xmark" style="color:#ff0000;"></i> Not Included in Storage Rate</li>
+                </ul>
+                <a href="#apidocs" class="plan-btn">See API Docs</a>
+            </div>
+
+            <div class="price-card" data-aos="flip-right" data-aos-delay="100">
+                <div class="plan-badge">API Usage</div>
+                <div class="plan-title">GET/LIST Requests</div>
+                <div class="plan-price">
+                    <span class="curr-symbol">$</span><span class="amount" data-usd="0.004" data-inr="0.32">0.004</span><span>/1k requests</span>
+                </div>
+                <p style="color:#888; font-size:0.9rem;">Operations like downloading or retrieving data (Class B).</p>
+                <ul class="plan-features">
+                    <li><i class="fa-solid fa-check"></i> Read/Retrieve Operations</li>
+                    <li><i class="fa-solid fa-check"></i> Bucket Listings</li>
+                    <li><i class="fa-solid fa-check"></i> Low Latency Retrieval</li>
+                    <li><i class="fa-solid fa-xmark" style="color:#ff0000;"></i> Not Included in Storage Rate</li>
+                </ul>
+                <a href="#apidocs" class="plan-btn">See API Docs</a>
+            </div>
+        </div>
+        
+        <p style="text-align:center; color:#888; margin-top:40px; font-size:0.9rem;" data-aos="fade-up">* Data Transfer Out (Egress) to the Internet is priced separately. All transfers within AXTCloud are free.</p>
+    </section>
+
+    <footer data-aos="fade-up" data-aos-delay="100">
+        <div class="footer-container">
+            
+            <div class="footer-brand">
+                <div class="brand" style="filter: grayscale(100%); opacity: 0.5;">
+                    <img src="https://cdn.axt.co.in/logo.jpg" alt="AXT Logo" width="30">
+                    <div>AXT<span>Cloud</span></div>
+                </div>
+                <p style="margin-top:15px; font-size:0.9rem;">AXT TECHNOLOGYS PVT LTD provides premium cloud infrastructure, managed databases, and dedicated servers.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Products</h4>
+                <ul>
+                    <li><a href="cloud-hosting.html">Cloud Hosting</a></li>
+                    <li><a href="dedicated-ip.html">Dedicated IP</a></li>
+                    <li><a href="object-storage.html">Object Storage</a></li>
+                    <li><a href="email-hosting.html">Email Hosting</a></li>
+                    <li><a href="discordbot-hosting.html">Bot Hosting</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="mailto:sales@mail.axt.co.in">Sales Team</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="acceptable-use.html">AUP</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="copyright-bar">
+            <p>© <span id="year"></span> AXT TECHNOLOGYS PVT LTD. All Rights Reserved.</p>
+            <p style="color:#444; margin-top:5px;">Unit 14B, World Trade Center, Brigade Gateway Campus, Bengaluru – 560055</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Initialize AOS
+        AOS.init({
+            duration: 800,       // values from 0 to 3000, with step 50ms
+            once: true,          // whether animation should happen only once - while scrolling down
+            mirror: false,       // whether elements should animate out while scrolling past them
+            anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
+        });
+
+        // CURRENCY LOGIC (Unchanged)
+        function toggleCurrency(curr, btn) {
+            document.querySelectorAll('.curr-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const symbol = curr === 'USD' ? '$' : '₹';
+            document.querySelectorAll('.curr-symbol').forEach(el => el.textContent = symbol);
+
+            document.querySelectorAll('.amount').forEach(el => {
+                if (curr === 'USD') {
+                    el.textContent = el.getAttribute('data-usd');
+                } else {
+                    el.textContent = el.getAttribute('data-inr');
+                }
+            });
+        }
+
+        // Mobile Menu (Unchanged)
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        const overlay = document.getElementById('overlay');
+        const toggleIcon = mobileToggle.querySelector('i');
+
+        function toggleMenu() {
+            const isActive = navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+            if (isActive) {
+                toggleIcon.classList.remove('fa-bars');
+                toggleIcon.classList.add('fa-xmark');
+                document.body.style.overflow = 'hidden';
+            } else {
+                toggleIcon.classList.remove('fa-xmark');
+                toggleIcon.classList.add('fa-bars');
+                document.body.style.overflow = '';
+            }
+        }
+        function closeMenu() {
+            navLinks.classList.remove('active');
+            overlay.classList.remove('active');
+            toggleIcon.classList.remove('fa-xmark');
+            toggleIcon.classList.add('fa-bars');
+            document.body.style.overflow = '';
+        }
+        mobileToggle.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', closeMenu);
+    </script>
+</body>
+</html>
