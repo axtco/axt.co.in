@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>AXTCloud | Website to IP Lookup</title>
+    <meta name="description" content="Instantly lookup the IP address for any domain name using AXTCloud's high-speed tool.">
+    <meta name="theme-color" content="#050505">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AXTCloud - IP Lookup Tool">
+    <meta property="og:image" content="https://cdn.axt.co.in/logo.jpg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="icon" type="image/jpg" href="https://cdn.axt.co.in/logo.jpg">
+    <link rel="shortcut icon" type="image/jpg" href="https://cdn.axt.co.in/logo.jpg">
+
+    <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+    <style>
+        /* BASE THEME CSS (Retained and slightly trimmed for focus) */
+        :root {
+            --primary-red: #ff0000;
+            --dark-bg: #050505;
+            --card-bg: #111111;
+            --text-white: #ffffff;
+            --text-muted: #aaaaaa;
+            --border-color: #222;
+            --gradient: linear-gradient(135deg, #ff0000 0%, #8b0000 100%);
+            --header-height: 80px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        html { scroll-behavior: smooth; scroll-padding-top: var(--header-height); }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+        
+        header {
+            position: fixed; top: 0; width: 100%; height: var(--header-height); padding: 0 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .brand { font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 10px; z-index: 1002; }
+        .brand span { color: var(--primary-red); }
+
+        .cta-btn {
+            background: var(--primary-red); padding: 10px 24px; border-radius: 8px; font-weight: 600;
+            color: white !important; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+            display: inline-block; border: none; cursor: pointer;
+        }
+
+        .hero {
+            min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center; padding: 120px 20px 60px;
+            background: radial-gradient(circle at center, #1a0000 0%, var(--dark-bg) 70%);
+            position: relative;
+        }
+        
+        .hero::before {
+            content: ''; position: absolute; top:0; left:0; width:100%; height:100%;
+            background-image: radial-gradient(#222 1px, transparent 1px);
+            background-size: 40px 40px; opacity: 0.15; pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 700; line-height: 1.1; margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #aaa); -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero h1 span {
+            background: var(--gradient); -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p.subtitle {
+            font-size: clamp(1rem, 3vw, 1.2rem); color: var(--text-muted); max-width: 700px; margin: 0 auto 40px;
+        }
+
+        /* LOOKUP FORM STYLES */
+        .lookup-form-container { width: 100%; max-width: 600px; margin-top: 40px; }
+        .lookup-form {
+            display: flex; background: var(--card-bg); border-radius: 12px; border: 2px solid var(--border-color);
+            overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .lookup-input {
+            flex-grow: 1; padding: 18px 20px; border: none; background: transparent;
+            color: var(--text-white); font-size: 1rem; outline: none; text-align: left;
+        }
+
+        .lookup-btn {
+            flex-shrink: 0; padding: 0 30px; font-size: 1rem; background: var(--primary-red);
+            color: var(--text-white) !important; font-weight: 600; border: none; cursor: pointer; transition: 0.3s;
+        }
+        .lookup-btn:hover { background: #cc0000; }
+        .lookup-btn:disabled { background: #444; cursor: not-allowed; }
+        
+        /* RESULTS STYLES */
+        .results-container { margin-top: 40px; width: 100%; max-width: 600px; }
+        .result-box {
+            background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px;
+            padding: 20px 30px; text-align: left; min-height: 50px; display: flex; flex-direction: column;
+            justify-content: center; transition: opacity 0.5s ease;
+        }
+        .result-box.show { opacity: 1; }
+        .result-item {
+            display: flex; justify-content: space-between; align-items: center; padding: 10px 0;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .result-item:last-child { border-bottom: none; }
+        .result-label { color: var(--primary-red); font-weight: 600; font-size: 1rem; }
+        .result-value { color: var(--text-white); font-size: 1.1rem; font-weight: 500; word-break: break-all; }
+        .error-message { color: var(--primary-red); font-weight: 500; text-align: center; padding: 10px; }
+        .loading-spinner {
+            border: 4px solid #f3f3f3; border-top: 4px solid var(--primary-red); border-radius: 50%;
+            width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /* END NEW STYLES */
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/" class="brand">
+            <img src="https://cdn.axt.co.in/logo.jpg" alt="AXT Logo" width="40" height="40">
+            <div>AXT<span>Cloud</span></div>
+        </a>
+        <nav class="nav-links" id="navLinks">
+            <a href="mailto:sales@mail.axt.co.in" class="cta-btn">Contact Sales</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="lookup-tool">
+        <div class="reveal">
+            <h1>Website to IP<br><span>Lookup Tool</span></h1>
+            <p class="subtitle">Instantly resolve any domain name to its public IP address (A record).</p>
+        </div>
+
+        <div class="lookup-form-container reveal">
+            <form id="lookupForm" class="lookup-form">
+                <input 
+                    type="text" 
+                    id="domainInput" 
+                    class="lookup-input" 
+                    placeholder="Enter a domain name (e.g., axt.co.in)" 
+                    required
+                    aria-label="Domain name input"
+                >
+                <button type="submit" id="lookupBtn" class="lookup-btn">
+                    Lookup IP <i class="fa-solid fa-magnifying-glass" style="margin-left: 5px;"></i>
+                </button>
+            </form>
+        </div>
+
+        <div class="results-container">
+            <div id="results" class="result-box">
+                <p style="text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+                    Enter a domain and click Lookup to see the result.
+                </p>
+            </div>
+        </div>
+        
+    </section>
+
+    <footer>
+        <div class="trustpilot-widget" data-locale="en-US" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="69206b7a2a6043b23f4dfbb5" data-style-height="52px" data-style-width="100%" data-token="18287e79-0319-4355-92cc-3b2b74f9821f">
+            <a href="https://www.trustpilot.com/review/axt.co.in" target="_blank" rel="noopener">Trustpilot</a>
+        </div>
+        <div style="margin-bottom: 40px;"></div>
+
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="brand" style="filter: grayscale(100%); opacity: 0.5;">
+                    <img src="https://cdn.axt.co.in/logo.jpg" alt="AXT Logo" width="30">
+                    <div>AXT<span>Cloud</span></div>
+                </div>
+                <p style="margin-top:15px; font-size:0.9rem;">AXT TECHNOLOGYS PVT LTD provides premium cloud infrastructure, dedicated servers, and advanced security solutions.</p>
+            </div>
+            </div>
+
+        <div class="copyright-bar">
+            <p>© <span id="year"></span> AXT TECHNOLOGYS PVT LTD. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const lookupForm = document.getElementById('lookupForm');
+        const domainInput = document.getElementById('domainInput');
+        const resultsDiv = document.getElementById('results');
+        const lookupBtn = document.getElementById('lookupBtn');
+
+        lookupForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const domain = domainInput.value.trim().toLowerCase();
+            if (!domain) return;
+
+            // Clear previous results and show loading state
+            resultsDiv.classList.remove('show');
+            resultsDiv.innerHTML = `<div class="loading-spinner"></div>`;
+            lookupBtn.disabled = true;
+
+            try {
+                // *** CRITICAL FIX: Using an absolute path (/lookup) ensures the browser always calls
+                // https://axt.co.in/lookup regardless of the subdirectory the HTML is loaded from. ***
+                const apiPath = '/lookup?domain=' + encodeURIComponent(domain); 
+                
+                const response = await fetch(apiPath);
+                const data = await response.json();
+
+                let htmlContent = '';
+
+                if (response.ok && data.ip) {
+                    // Success
+                    htmlContent = `
+                        <div class="result-item">
+                            <span class="result-label">Domain:</span>
+                            <span class="result-value">${domain}</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">IP Address (A Record):</span>
+                            <span class="result-value">${data.ip}</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Resolved Via:</span>
+                            <span class="result-value">Cloudflare DoH Worker</span>
+                        </div>
+                    `;
+                } else {
+                    // Error (API returned error message, including 404/400/500)
+                    const errorMessage = data.error || 'Failed to resolve the domain. Check the domain name.';
+                    htmlContent = `<p class="error-message"><i class="fa-solid fa-circle-exclamation" style="margin-right: 8px;"></i>${errorMessage}</p>`;
+                }
+
+                resultsDiv.innerHTML = htmlContent;
+                resultsDiv.classList.add('show');
+                
+            } catch (error) {
+                // Catches network/CORS issues where the Worker is completely unreachable
+                console.error('Lookup fetch error:', error);
+                resultsDiv.innerHTML = `<p class="error-message"><i class="fa-solid fa-circle-exclamation" style="margin-right: 8px;"></i>A network error occurred or the API is unreachable. (Check Worker Route)</p>`;
+                resultsDiv.classList.add('show');
+            } finally {
+                lookupBtn.disabled = false;
+            }
+        });
+    </script>
+
+</body>
+</html>
