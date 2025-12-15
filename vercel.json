@@ -1,0 +1,57 @@
+{
+  "version": 2,
+  
+  /* Enables clean URLs globally for static files */
+  "cleanUrls": true,
+
+  /* Defines the build step for your Node.js serverless functions */
+  "builds": [
+    {
+      "src": "api/*.js",
+      "use": "@vercel/node"
+    }
+  ],
+
+  /* Configuration for routing logic:
+    1. Ensures specific pages (like the free trial) are handled.
+    2. Provides a general rule for all static HTML files.
+    3. Handles the main root index.
+  */
+  "rewrites": [
+    /* 1. Specific Rewrite for the Free Trial Page:
+         Maps /freetrial to freetrail.html.
+    */
+    {
+      "source": "/freetrial",
+      "destination": "/freetrail.html"
+    },
+    
+    /* 2. Rewrite for the API Endpoint: 
+         Ensures the API path is explicitly defined (standard practice).
+    */
+    {
+      "source": "/api/freetrail",
+      "destination": "/api/freetrail.js"
+    },
+    
+    /* 3. Generic Rewrites for All Future Static HTML Pages:
+         This rule catches requests for paths like /vps, /about, /dedicated, 
+         and serves the corresponding .html file, hiding the extension.
+         
+         *This is the rule that future-proofs your clean URLs.*
+    */
+    {
+      "source": "/:page(vps|dedicated-servers|ddos-protection|about)",
+      "destination": "/:page.html"
+    },
+    
+    /* 4. Handle Base Page Redirects:
+         This is useful if you name your main VPS page vps-hosting.html 
+         and want it accessible via the simpler /vps URL.
+    */
+    {
+      "source": "/vps",
+      "destination": "/vps-hosting.html"
+    }
+  ]
+}
