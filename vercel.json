@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "builds": [
+    {
+      "src": "api/*.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/freetrial",
+      "destination": "/freetrail.html"
+    },
+    {
+      "source": "/api/freetrail",
+      "destination": "/api/freetrail.js"
+    },
+    {
+      "source": "/:page(vps|dedicated-servers|ddos-protection|about)",
+      "destination": "/:page.html"
+    },
+    {
+      "source": "/vps",
+      "destination": "/vps-hosting.html"
+    }
+  ]
+}
