@@ -1,0 +1,25 @@
+{
+  "name": "axtcity-whitelist-project",
+  "version": "1.0.0",
+  "description": "Vercel-hosted whitelist application for AxtCity Roleplay.",
+  "main": "api/whitelist.js",
+  "scripts": {
+    "start": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "resend": "^3.0.0"
+  },
+  "devDependencies": {
+    "vercel": "^32.0.0"
+  },
+  "keywords": [
+    "vercel",
+    "serverless",
+    "resend",
+    "fivem",
+    "roleplay"
+  ],
+  "author": "AxtCity Development Team",
+  "license": "ISC"
+}
