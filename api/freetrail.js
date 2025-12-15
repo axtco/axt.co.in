@@ -11,7 +11,7 @@ const AWS_SECRET_ACCESS_KEY = process.env.AXT_AWS_SECRET_ACCESS_KEY;
 
 const DYNAMODB_TABLE_NAME = process.env.DYNAMODB_TABLE_NAME;
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const SENDER_EMAIL = 'updates@goaxt.cloud';
+const SENDER_EMAIL = 'updates@mailer.goaxt.cloud';
 
 // Robust check for missing critical environment variables
 if (!AWS_REGION || !DYNAMODB_TABLE_NAME || !RESEND_API_KEY || !AWS_ACCESS_KEY_ID || !AWS_SECRET_ACCESS_KEY || !SENDER_EMAIL) {
