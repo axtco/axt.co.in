@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>30-Day Free VPS Trial | AXTCloud</title>
+    <meta name="description" content="Start your dream project with AXTCloud's high-performance VPS for 30 days free. NVMe storage, AMD EPYC/RYZEN.">
+    <meta name="theme-color" content="#050505">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="icon" type="image/jpg" href="https://cdn.axt.co.in/logo.jpg">
+
+    <style>
+        :root {
+            --primary-red: #ff0000;
+            --dark-bg: #050505;
+            --card-bg: #111111;
+            --text-white: #ffffff;
+            --text-muted: #aaaaaa;
+            --border-color: #222;
+            --gradient: linear-gradient(135deg, #ff0000 0%, #8b0000 100%);
+            --header-height: 80px;
+            /* New Fonts */
+            --font-body: 'Poppins', sans-serif;
+            --font-display: 'Audiowide', cursive;
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            /* Optimize for Mobile browsers */
+            -webkit-tap-highlight-color: transparent; 
+        }
+        html { scroll-behavior: smooth; scroll-padding-top: var(--header-height); }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--dark-bg);
+            color: var(--text-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        /* Apply unique font to primary headings and brand */
+        .brand, .freetrial-section h1, .spec-card h2 {
+            font-family: var(--font-display);
+        }
+
+        /* UTILITIES */
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+
+        /* ANIMATIONS */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* HEADER */
+        header {
+            position: fixed; top: 0; width: 100%; height: var(--header-height);
+            padding: 0 5%; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(5, 5, 5, 0.85); 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .brand { 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            z-index: 1002;
+        }
+        .brand span { color: var(--primary-red); }
+        .brand img { height: 40px; border-radius: 6px; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { font-size: 0.95rem; color: #ccc; font-weight: 500; }
+        .nav-links a:hover { color: var(--text-white); }
+        .cta-btn {
+            background: var(--primary-red); padding: 10px 24px; border-radius: 8px;
+            font-weight: 600; color: white !important; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+        }
+        .cta-btn:hover { background: #cc0000; transform: translateY(-2px); }
+        .mobile-toggle { display: none; font-size: 1.5rem; color: #fff; cursor: pointer; z-index: 1002; }
+
+
+        /* FREE TRIAL SECTION */
+        .freetrial-section {
+            padding: 140px 20px 80px;
+            text-align: center;
+            background: radial-gradient(circle at top, #1a0000 0%, var(--dark-bg) 70%);
+        }
+        .freetrial-section h1 {
+            /* Optimized for responsiveness */
+            font-size: clamp(2rem, 5vw, 3.5rem); 
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .freetrial-section h1 span {
+            background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .freetrial-section > p {
+            color: var(--text-muted); max-width: 600px; margin: 0 auto 40px; font-size: 1.1rem;
+        }
+        
+        /* CARD AND FORM LAYOUT */
+        .content-wrapper {
+            display: flex;
+            gap: 40px;
+            text-align: left;
+            margin-top: 40px;
+        }
+        
+        .spec-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            flex: 1;
+            min-width: 300px;
+            align-self: flex-start;
+        }
+        
+        .spec-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-red);
+        }
+        .original-price {
+            font-size: 0.9rem;
+            color: #888;
+            text-decoration: line-through;
+            display: block;
+            margin-top: 5px;
+        }
+        .free-price {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        .free-duration {
+            font-size: 1.1rem;
+            color: var(--primary-red);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .specs-list-trial { margin-bottom: 30px; }
+        .specs-list-trial li {
+            display: flex; align-items: center; gap: 10px;
+            margin-bottom: 12px; color: #ccc; 
+            font-size: clamp(0.9rem, 1.5vw, 0.95rem); /* Optimized font size */
+        }
+        .specs-list-trial i { color: var(--primary-red); width: 18px; text-align: center; }
+
+        .trial-form-wrapper {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            flex: 2;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #fff;
+            font-size: 0.95rem;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            background: #0d0d0d;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: #fff;
+            font-family: var(--font-body); /* Ensure consistent font in inputs */
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--primary-red);
+            outline: none;
+            box-shadow: 0 0 0 1px var(--primary-red);
+        }
+        .form-group select option {
+            background: #111;
+            color: #fff;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary-red);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+        }
+        .submit-btn:hover {
+            background: #cc0000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+        }
+        .submit-btn:disabled {
+            background: #555;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-weight: 500;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            max-height: 0;
+            overflow: hidden;
+        }
+        .alert.show {
+            opacity: 1;
+            max-height: 200px;
+            padding: 15px;
+        }
+        .alert.success { background-color: #0c4; color: #052; }
+        .alert.error { background-color: #f33; color: #500; }
+
+        /* FOOTER */
+        footer { background: #080808; border-top: 1px solid #222; padding: 60px 20px; text-align: center; color: #666; margin-top: 60px;}
+        .footer-links { margin: 25px 0; font-size: 0.9rem; }
+        .footer-links a { color: #999; padding: 0 10px; }
+        .footer-links a:hover { color: var(--primary-red); }
+
+        /* MOBILE OPTIMIZATION (All devices below 992px) */
+        @media (max-width: 992px) {
+            .mobile-toggle { display: block; }
+            .nav-links {
+                position: fixed; top: 0; right: -100%; height: 100vh; width: 75%; max-width: 300px;
+                background: #111; flex-direction: column; justify-content: center; gap: 40px;
+                transition: 0.4s ease; z-index: 1001; box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+            }
+            .nav-links.active { right: 0; }
+            .overlay {
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.7); z-index: 1000; display: none; opacity: 0; transition: 0.3s;
+            }
+            .overlay.active { display: block; opacity: 1; }
+            /* Key responsive change */
+            .content-wrapper { flex-direction: column; } 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay" id="overlay"></div>
+
+    <header>
+        <a href="index.html" class="brand">
+            <img src="https://cdn.axt.co.in/logo.jpg" alt="AXT Logo">
+            <div>AXT<span>Cloud</span></div>
+        </a>
+        <div class="mobile-toggle" id="mobileToggle"><i class="fa-solid fa-bars"></i></div>
+        <nav class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="vps-hosting.html">VPS</a>
+            <a href="dedicated-servers.html">Dedicated</a>
+            <a href="ddos-protection.html">Security</a>
+            <a href="about.html">About Us</a>
+            <a href="mailto:sales@mail.axt.co.in" class="cta-btn">Contact Sales</a>
+        </nav>
+    </header>
+
+    <div class="freetrial-section reveal">
+        <h1>Unleash Your Potential with a <br><span>30-Day Free VPS Trial</span></h1>
+        <p>Start your dream project instantly on AXTCloud's premium infrastructure. High-performance, no commitment.</p>
+
+        <div class="container content-wrapper">
+            <div class="spec-card reveal">
+                <h2>Trial Specification</h2>
+                <span class="original-price">Original Price: ₹656.00/mo</span>
+                <div class="free-price">₹0.00</div>
+                <div class="free-duration">For 30 Days</div>
+                
+                <ul class="specs-list-trial">
+                    <li><i class="fa-solid fa-microchip"></i> CPU: 1 vCore @ 5.7GHz (EPYC 4584PX)</li>
+                    <li><i class="fa-solid fa-memory"></i> RAM: 2GB DDR5 @ 5200MHz</li>
+                    <li><i class="fa-solid fa-hard-drive"></i> Storage: 20GB NVMe SSD</li>
+                    <li><i class="fa-solid fa-gauge"></i> Bandwidth: 1TB Traffic</li>
+                    <li><i class="fa-solid fa-shield-halved"></i> DDoS Protection: 1.3 Tbit/s</li>
+                </ul>
+                <p style="font-style: italic; color: #888; font-size: 0.9rem;">"Build your dream project with us."</p>
+            </div>
+
+            <div class="trial-form-wrapper reveal">
+                <h2>Request Your Free Trial</h2>
+                <form id="freeTrialForm" onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="name@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+91 98765 43210">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Preferred Server Location</label>
+                        <select id="location" name="location" required>
+                            <option value="" disabled selected>Select a Location</option>
+                            <option value="Singapore">Singapore</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="USA">USA</option>
+                            <option value="Germany">Germany</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="os">Preferred Operating System</label>
+                        <select id="os" name="os" required>
+                            <option value="" disabled selected>Select an Operating System</option>
+                            <optgroup label="Windows Server">
+                                <option value="Windows Server 2022">Microsoft Windows Server 2022</option>
+                                <option value="Windows Server 2019">Microsoft Windows Server 2019</option>
+                                <option value="Windows Server 2016">Microsoft Windows Server 2016</option>
+                            </optgroup>
+                            <optgroup label="Ubuntu">
+                                <option value="Ubuntu 24.04">Ubuntu 24.04 LTS (Noble Numbat)</option>
+                                <option value="Ubuntu 22.04">Ubuntu 22.04 LTS (Jammy Jellyfish)</option>
+                                <option value="Ubuntu 20.04">Ubuntu 20.04 LTS (Focal Fossa)</option>
+                            </optgroup>
+                            <optgroup label="Enterprise Linux & Others">
+                                <option value="RHEL">Red Hat Enterprise Linux (RHEL)</option>
+                                <option value="SLES">SUSE Linux Enterprise Server (SLES)</option>
+                                <option value="CentOS">CentOS Linux</option>
+                                <option value="Debian">Debian</option>
+                            </optgroup>
+                            <optgroup label="BSD">
+                                <option value="FreeBSD">FreeBSD</option>
+                                <option value="NetBSD">NetBSD</option>
+                            </optgroup>
+                            <optgroup label="macOS (Via AMIs)">
+                                <option value="macOS Sonoma">macOS Sonoma (Latest AMI)</option>
+                                <option value="macOS Ventura">macOS Ventura (version 13+)</option>
+                                <option value="macOS Monterey">macOS Monterey (version 12+)</option>
+                                <option value="macOS Big Sur">macOS Big Sur (version 11+)</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">Start Your Free Trial</button>
+                    <div id="formAlert" class="alert"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="brand" style="justify-content: center; margin-bottom: 20px; filter: grayscale(100%); opacity: 0.5;">
+            <img src="https://cdn.axt.co.in/logo.jpg" alt="AXT Logo" width="40" height="40">
+            <div>AXT<span>Cloud</span></div>
+        </div>
+        <p>© <span id="year"></span> AXT TECHNOLOGYS PVT LTD. All Rights Reserved.</p>
+        <div class="footer-links">
+            <a href="about.html">About Us</a> | 
+            <a href="privacy.html">Privacy Policy</a> | 
+            <a href="terms.html">Terms of Service</a>
+        </div>
+        <p style="font-size: 0.85rem; color: #444;">Unit 14B, World Trade Center, Bengaluru – 560055</p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Logic
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        const overlay = document.getElementById('overlay');
+        const toggleIcon = mobileToggle.querySelector('i');
+
+        function toggleMenu() {
+            const isActive = navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+            if (isActive) {
+                toggleIcon.classList.remove('fa-bars');
+                toggleIcon.classList.add('fa-xmark');
+                document.body.style.overflow = 'hidden';
+            } else {
+                toggleIcon.classList.remove('fa-xmark');
+                toggleIcon.classList.add('fa-bars');
+                document.body.style.overflow = '';
+            }
+        }
+        function closeMenu() {
+            navLinks.classList.remove('active');
+            overlay.classList.remove('active');
+            toggleIcon.classList.remove('fa-xmark');
+            toggleIcon.classList.add('fa-bars');
+            document.body.style.overflow = '';
+        }
+        mobileToggle.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', closeMenu);
+        document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', closeMenu)); // Close menu on link click
+
+        // Reveal Animation
+        if ('IntersectionObserver' in window) {
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+        } else {
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+        }
+        
+        // --- Form Submission Logic (Client-Side) ---
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const submitBtn = document.getElementById('submitBtn');
+            const formAlert = document.getElementById('formAlert');
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Processing...';
+            formAlert.classList.remove('show', 'success', 'error');
+            formAlert.textContent = '';
+
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                // IMPORTANT: The path is relative to the root for Vercel Serverless Functions
+                const response = await fetch('/api/freetrail', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    formAlert.classList.add('show', 'success');
+                    formAlert.textContent = `Success! Your free trial request (Ref: ${result.referenceNumber}) has been submitted. A confirmation email is on its way.`;
+                    form.reset();
+                } else {
+                    formAlert.classList.add('show', 'error');
+                    formAlert.textContent = result.error || 'An unexpected error occurred. Please try again.';
+                }
+            } catch (error) {
+                console.error('Submission error:', error);
+                formAlert.classList.add('show', 'error');
+                formAlert.textContent = 'Network error: Could not connect to the server. Please check your connection.';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Start Your Free Trial';
+            }
+        }
+    </script>
+</body>
+</html>
