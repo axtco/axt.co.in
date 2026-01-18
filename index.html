@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notice: Domain Access Restricted</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-top: 10px solid #d9534f;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 600px;
+            text-align: center;
+        }
+        h1 {
+            color: #d9534f;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #333;
+            line-height: 1.6;
+            font-size: 18px;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #000;
+        }
+        .footer-info {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #777;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>NOTICE OF DOMAIN TAKEDOWN</h1>
+    <p>
+        This site has been taken down by <strong>ipindia.gov.in</strong> due to 
+        <br>
+        <span class="highlight">TRADEMARK INFRINGEMENT</span>
+    </p>
+    
+    <div class="footer-info">
+        <p>Submitted by: <strong>Irshad C</strong></p>
+        <p>Date: <span id="current-date"></span></p>
+        <p>Submission ID: <span id="submission-id"></span></p>
+    </div>
+</div>
+
+<script>
+    // Set current date
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('current-date').textContent = new Date().toLocaleDateString(undefined, options);
+
+    // Generate a random static-looking Submission ID
+    const randomID = "IP-" + Math.floor(Math.random() * 1000000).toString().padStart(6, '0') + "-IN";
+    document.getElementById('submission-id').textContent = randomID;
+</script>
+
+</body>
+</html>
