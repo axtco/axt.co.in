@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>AXTCloud | Premium Cloud Hosting Partner</title>
+    <meta name="description" content="AXTCloud - Premium VPS, Dedicated Servers, and Enterprise Cloud Hosting with advanced DDoS protection and white-glove support.">
+    <meta name="theme-color" content="#050505">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AXTCloud - Premium Hosting">
+    <meta property="og:image" content="https://cdn.axt.co.in/logo.jpg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="icon" type="image/jpg" href="https://cdn.axt.co.in/logo.jpg">
+    <link rel="shortcut icon" type="image/jpg" href="https://cdn.axt.co.in/logo.jpg">
+
+    <style>
+        :root {
+            --primary-red: #ff0000;
+            --text-white: #ffffff;
+            --text-muted: #cccccc;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --gradient: linear-gradient(135deg, #ff0000 0%, #8b0000 100%);
+            --header-height: 100px;
+            --bg-image: url('https://s3.axtnq.xyz/9052ed0c-e9d9-4ebe-b8fa-47103b520e81/1769513526965-G_aqu9tXUAAlRol.jpg');
+        }
+
+        /* RESET & BASE */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), var(--bg-image);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* ANIMATIONS */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* HEADER & LOGO - MOVES WITH SCROLL, NO BLUR */
+        header {
+            position: absolute; /* Moves with scroll */
+            top: 0;
+            width: 100%;
+            height: var(--header-height);
+            padding: 0 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent; /* No solid color */
+            backdrop-filter: none; /* No blur as requested */
+            -webkit-backdrop-filter: none;
+            z-index: 1000;
+        }
+
+        .brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .brand span { color: var(--primary-red); }
+        .brand img { height: 45px; border-radius: 8px; }
+
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { font-size: 0.95rem; color: #fff; font-weight: 500; }
+        .nav-links a:hover { color: var(--primary-red); }
+
+        .cta-btn {
+            background: var(--primary-red);
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+            border: none;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 150px 20px 60px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 60px;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .stat-item {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* SERVICES SECTION */
+        section { padding: 80px 5%; max-width: 1400px; margin: 0 auto; }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(12px);
+            transition: 0.4s ease;
+        }
+        .card:hover { border-color: var(--primary-red); transform: translateY(-5px); }
+        .card i { font-size: 2.5rem; color: var(--primary-red); margin-bottom: 20px; }
+
+        /* OS SECTION */
+        .os-section { 
+            background: rgba(255, 255, 255, 0.02); 
+            backdrop-filter: blur(8px); 
+            width: 100%; 
+            padding: 80px 20px;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .os-pill {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 12px 25px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            padding: 80px 5% 30px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* MOBILE MENU */
+        @media (max-width: 992px) {
+            .mobile-toggle { display: block; font-size: 1.5rem; color: #fff; cursor: pointer; }
+            .nav-links {
+                position: fixed; top: 0; right: -100%; height: 100vh; width: 75%; 
+                background: rgba(0,0,0,0.95); flex-direction: column; justify-content: center; 
+                transition: 0.4s; z-index: 1001;
+            }
+            .nav-links.active { right: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="brand">
+            <img src="https://cdn.axt.co.in/logo.jpg" alt="AXT Logo">
+            <div>AXT<span>Cloud</span></div>
+        </a>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="vps-hosting.html">VPS</a>
+            <a href="dedicated-servers.html">Dedicated</a>
+            <a href="minecraft-hosting.html">Minecraft</a>
+            <a href="fivem-hosting.html">FiveM</a>
+            <a href="info/our-infrastructure.html">Infrastructure</a>
+            <a href="mailto:sales@mail.axt.co.in" class="cta-btn">Contact Sales</a>
+        </nav>
+
+        <div class="mobile-toggle" id="mobileToggle" style="display: none;">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="reveal">
+            <h1>AXTCloud<br><span>Your Cloud Partner</span></h1>
+            <p style="color: var(--text-muted); max-width: 650px; margin: 20px auto 40px;">Premium enterprise-grade infrastructure with a completely transparent approach to hosting performance.</p>
+            <a href="vps-hosting.html" class="cta-btn" style="padding: 15px 40px;">Get Started</a>
+        </div>
+        
+        <div class="stats-grid reveal">
+            <div class="stat-item"><span style="color:var(--primary-red); font-weight:700; display:block; font-size: 1.5rem;">99.9%</span> Uptime</div>
+            <div class="stat-item"><span style="color:var(--primary-red); font-weight:700; display:block; font-size: 1.5rem;">24/7</span> Support</div>
+            <div class="stat-item"><span style="color:var(--primary-red); font-weight:700; display:block; font-size: 1.5rem;">10 Gbps</span> Network</div>
+            <div class="stat-item"><span style="color:var(--primary-red); font-weight:700; display:block; font-size: 1.5rem;">Global</span> Locations</div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div style="text-align: center; margin-bottom: 50px;" class="reveal">
+            <h2>Our Core <span style="color: var(--primary-red);">Services</span></h2>
+        </div>
+        <div class="services-grid">
+            <div class="card reveal">
+                <i class="fa-solid fa-server"></i>
+                <h3>Cloud VPS</h3>
+                <p>Isolated virtual resources with NVMe storage and root access for total control.</p>
+            </div>
+            <div class="card reveal">
+                <i class="fa-solid fa-microchip"></i>
+                <h3>Dedicated</h3>
+                <p>Pure bare metal performance on high-frequency AMD EPYC™ hardware.</p>
+            </div>
+            <div class="card reveal">
+                <i class="fa-solid fa-gamepad"></i>
+                <h3>Game Hosting</h3>
+                <p>Optimized low-latency networks for Minecraft, FiveM, and professional gaming.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="os-section">
+        <div style="text-align: center;" class="reveal">
+            <h2 style="margin-bottom: 30px;">Supported Operating Systems</h2>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
+                <div class="os-pill"><i class="fa-brands fa-windows"></i> Windows</div>
+                <div class="os-pill"><i class="fa-brands fa-ubuntu"></i> Ubuntu</div>
+                <div class="os-pill"><i class="fa-brands fa-linux"></i> Debian</div>
+                <div class="os-pill"><i class="fa-solid fa-upload"></i> Custom ISO</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div>
+                <div class="brand">
+                    <img src="https://cdn.axt.co.in/logo.jpg" alt="Logo" width="35">
+                    <div>AXT<span>Cloud</span></div>
+                </div>
+                <p style="font-size: 0.85rem; margin-top: 15px; color: #aaa;">Premium Cloud Infrastructure Solutions.<br>© <span id="year"></span> AXT TECHNOLOGYS PVT LTD.</p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 15px;">Links</h4>
+                <ul style="font-size: 0.9rem; color: #888;">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Mobile Toggle Script
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        if(mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+
+        // Intersection Observer for Reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
